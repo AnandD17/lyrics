@@ -38,22 +38,22 @@ export const Sidebar = () => {
 
             </div>
             <div>
-                <div className='pl-[30px] py-3 flex gap-[13px]'>
+                <a href='/' className='pl-[30px] py-3 flex gap-[13px]'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Contact Us</div>
-                </div>
-                <div className='pl-[30px] py-3 flex gap-[13px]'>
+                </a>
+                <a href='/privacy' className='pl-[30px] py-3 flex gap-[13px]'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Pivacy Policy</div>
-                </div>
-                <div className='pl-[30px] py-3 flex gap-[13px]'>
+                </a>
+                <a href='/disclaimer' className='pl-[30px] py-3 flex gap-[13px]'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Disclaimer</div>
-                </div>
-                <div className='pl-[30px] py-3 flex gap-[13px]'>
+                </a>
+                <a href='/' className='pl-[30px] py-3 flex gap-[13px]'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Dark Mode</div>
-                </div>
+                </a>
             </div>
 
         </div>
