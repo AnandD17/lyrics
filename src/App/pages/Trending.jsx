@@ -7,15 +7,16 @@ import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
 import music from './../assets/music.jpg'
 
-export const Recents = () => {
+export const Trending = () => {
   const [songs,setSongs] = useState([])
 
   
 
   const  getData = async()=>{
-    const data =  await axios.get(`${BASE_URL}/recent_uploads?page=1`)
+    const data =  await axios.get(`${BASE_URL}/trendings`)
     if(data) {
       setSongs(data.data.data);
+      console.log(data);
     }
     console.log(data);
   }
@@ -24,13 +25,13 @@ export const Recents = () => {
   },[]);
 
   return (
-    <div className='Recents h-full w-full overflow-hidden'>
+    <div className='Trending h-full w-full overflow-hidden'>
 
       <SearchBar/>
 
       <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px]'>
         <div className='flex justify-start mb-4'>
-          <ButtonHeader title={'Recently Added'}/>
+          <ButtonHeader title={'Trending'}/>
         </div>
         <div className="grid gap-3 grid-cols-5">
         {songs.map((song) => (

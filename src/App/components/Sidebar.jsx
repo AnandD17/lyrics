@@ -30,15 +30,15 @@ export const Sidebar = () => {
                         </div>
                         <div className='text-xl'>Recently Uploaded</div>
                     </a>
-                    <div className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637]'>
+                    <a href='/trending' className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637]'>
                         <AiFillFire className='h-[30px] w-[30px]'/>
                         <div className='text-xl '>Trending</div>
-                    </div>
+                    </a>
                 </div>
 
             </div>
             <div>
-                <a href='/' className='pl-[30px] py-3 flex gap-[13px]'>
+                <a href='/contactus' className='pl-[30px] py-3 flex gap-[13px]'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Contact Us</div>
                 </a>

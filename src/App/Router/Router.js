@@ -6,6 +6,8 @@ import { Disclaimer } from '../pages/Disclaimer'
 import { Home } from '../pages/Home'
 import { Privacy } from '../pages/Privacy'
 import { Recents } from '../pages/Recents'
+import { Lyrics } from '../pages/Lyrics'
+import { Trending } from '../pages/Trending'
 
 export  const RouterMain = () => {
   return (
@@ -21,6 +23,8 @@ export  const RouterMain = () => {
                     <Route exact path="/privacy" component={Privacy} />
                     <Route exact path="/disclaimer" component={Disclaimer} />
                     <Route exact path="/contactus" component={ContactUs} />
+                    <Route exact path="/lyrics" component={Lyrics} />
+                    <Route exact path="/trending" component={Trending} />
                 </Switch>
             </div> 
         </Router>
