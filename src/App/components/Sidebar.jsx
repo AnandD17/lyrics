@@ -6,9 +6,9 @@ export const Sidebar = () => {
     return (
         <div className='Sidebar w-full pt-[50px] flex flex-col justify-between h-full'>
             <div>
-                <div className="flex justify-center">
+                <a href='/' className="flex justify-center">
                     <img src="./assets/logo.svg" alt="" />
-                </div>
+                </a>
 
                 <div className='my-[30px] flex justify-center'>
                     <div className='border w-[80%]'></div>

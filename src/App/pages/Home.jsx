@@ -5,6 +5,8 @@ import { SearchBar } from '../components/SearchBar'
 import carousol from './../assets/car.jpg'
 import { BASE_URL } from '../utils/apiConstant'
 import axios from 'axios'
+import music from './../assets/music.jpg'
+
 
 export const Home = () => {
   
@@ -43,7 +45,7 @@ export const Home = () => {
         <div className="grid gap-3 grid-cols-5 mb-5">
           {songs.map((song) => (
             <div className="col-span-1" key={songs.id}>
-              <MusicThumbnail name={song.title} artist={song.artist} />
+              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} />
             </div>
           ))}
         </div>
@@ -53,7 +55,7 @@ export const Home = () => {
         <div className="grid gap-3 grid-cols-5 mb-5">
           {albums.map((song) => (
             <div className="col-span-1" key={songs.id}>
-              <MusicThumbnail name={song.slug} img={song.poster} />
+              <MusicThumbnail name={song.title} artist={song.album} img={song.poster?song.poster:music} />
             </div>
           ))}
         </div>
