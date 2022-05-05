@@ -6,15 +6,20 @@ import { Pagination } from '../components/Pagination'
 import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
 import music from './../assets/music.jpg'
+import LoadingBar from "react-top-loading-bar";
+
 
 export const Trending = () => {
   const [songs,setSongs] = useState([])
+  const [progress,setProgress] = useState(0);
 
   
 
   const  getData = async()=>{
+    setProgress(75)
     const data =  await axios.get(`${BASE_URL}/trendings`)
     if(data) {
+      setProgress(100)
       setSongs(data.data.data);
       console.log(data);
     }
@@ -26,6 +31,11 @@ export const Trending = () => {
 
   return (
     <div className='Trending h-full w-full overflow-hidden'>
+    <LoadingBar
+    progress={progress}
+    height={3}
+    color="#00C637"
+    />
 
       <SearchBar/>
 

@@ -6,22 +6,28 @@ import carousol from './../assets/car.jpg'
 import { BASE_URL } from '../utils/apiConstant'
 import axios from 'axios'
 import music from './../assets/music.jpg'
+import LoadingBar from "react-top-loading-bar";
 
 
-export const Home = () => {
+
+export const Home = (props) => {
+
   
   const [songs,setSongs] = useState([])
   const [albums,setAlbums] = useState([])
+  const [progress,setProgress] = useState(0);
 
   
 
   const  getData = async()=>{
+    setProgress(50)
     const data =  await axios.get(`${BASE_URL}/homepage`)
     if(data) {
+      setProgress(100)
+      console.log(data);
       setSongs(data.data.data.recent_songs);
-      setAlbums(data.data.data.recent_albums)
+      setAlbums(data.data.data.recent_albums);
     }
-    console.log(data);
   }
   useEffect(()=> {
     getData();
@@ -32,6 +38,11 @@ export const Home = () => {
 
   return (
     <div className='Home h-full w-full overflow-hidden'>
+    <LoadingBar
+    progress={progress}
+    height={3}
+    color="#00C637"
+    />
 
       <SearchBar />
 
@@ -45,7 +56,7 @@ export const Home = () => {
         <div className="grid gap-3 grid-cols-5 mb-5">
           {songs.map((song) => (
             <div className="col-span-1" key={songs.id}>
-              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} />
+              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>
             </div>
           ))}
         </div>
@@ -55,7 +66,7 @@ export const Home = () => {
         <div className="grid gap-3 grid-cols-5 mb-5">
           {albums.map((song) => (
             <div className="col-span-1" key={songs.id}>
-              <MusicThumbnail name={song.title} artist={song.album} img={song.poster?song.poster:music} />
+              <MusicThumbnail name={song.title} artist={song.album} img={song.poster?song.poster:music} {...props} />
             </div>
           ))}
         </div>

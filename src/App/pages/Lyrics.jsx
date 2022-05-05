@@ -1,15 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SearchBar } from '../components/SearchBar'
 import { ButtonHeader } from '../components/ButtonHeader'
 import music from './../assets/music.jpg'
+import axios from 'axios'
+import { BASE_URL } from '../utils/apiConstant'
+import LoadingBar from "react-top-loading-bar";
 
-export const Lyrics = () => {
+export const Lyrics = (props) => {
+
+    const [song,setSong] = useState('plan-a-by-paulo-londra')
+    const [info,setInfo] = useState([]);
+    const [progress,setProgress] = useState(0);
+
+    const getData = async() =>{
+        setProgress(50)
+        const data = await axios.get(`${BASE_URL}/lyrics/${props.name}`);
+        if(data){
+            setProgress(100)
+            setInfo(data.data.data[0]);
+        }
+
+    }
+    useEffect(()=>{
+        getData();
+    },[])
+
+    console.log(info);
   return (
     <div className='Lyrics h-full w-full overflow-hidden'>
+        <LoadingBar
+    progress={progress}
+    height={3}
+    color="#00C637"
+    />
 
             <SearchBar />
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[200px]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Meet me at our spot'} />
                 </div>
@@ -37,54 +64,14 @@ export const Lyrics = () => {
                     </div>
                     <div className="col-span-4 sm:col-span-3 text-center">
                         <div className='flex gap-4'>
-                        <ButtonHeader title={'CRT File'} />
-                        <ButtonHeader title={'Text'} />
+                        {info.lyrics_crt_file&&<ButtonHeader title={'CRT File'} />}
+                        {info.lyrics&&<ButtonHeader title={'Text'} />}
+                        
+                        
                         </div>
                         
-                        <div className='whitespace-div-wrap'>
-                            We don't talk about Bruno, no, no, no
-                            We don't talk about Bruno, but
-                            It was my wedding day
-                            It was our wedding day 
-                            We were getting ready
-                            And there wasn't a cloud in the sky
-                            No clouds allowed in the sky
-                            Bruno walks in with a mischievous grin
-                            Thunder
-                            You telling this story or am I?
-                            I'm sorry, mi vida, go on
-                            Bruno says, "It looks like rain"
-                            Why did he tell us?
-                            In doing so, he floods my brain
-                            Abuela, get the umbrellas
-                            Married in a hurricane
-                            What a joyous day but anyway
-                            We don't talk about Bruno, no, no, no
-                            We don't talk about Bruno
-                            Hey, grew to live in fear of Bruno stuttering or stumbling
-                            I can always hear him sort of muttering and mumbling
-                            I associate him with the sound of falling sand, ch ch ch
-                            It's a heavy lift with a gift so humbling
-                            Always left Abuela and the family fumbling
-                            Grappling with prophecies they couldn't understand
-                            Do you understand?
-                            A seven-foot frame, rats along his back
-                            When he calls your name it all fades to black
-                            Yeah, he sees your dreams and feasts on your screams (Hey)
-                            We don't talk about Bruno, no, no, no
-                            We don't talk about Bruno
-                            He told me my fish would die, the next day, dead (No, no)
-                            He told me I'd grow a gut and just like he said (No, no)
-                            He said that all my hair would disappear, now, look at my head (No, no)
-                            Your fate is sealed when your prophecy is read
-                            He told me that the life of my dreams
-                            Would be promised, and someday be mine
-                            He told me that my power would grow
-                            Like the grapes that thrive on the vine (Óye, Mariano's on his way)
-                            He told me that the man of my dreams
-                            Would be just out of reach
-                            Betrothed to another
-                            It's like I hear him, now
+                        <div className='whitespace-pre text-left overflow-auto pb-[100px]'>
+                            {info.lyrics_crt_file}
                         </div>
                         
                     </div>
