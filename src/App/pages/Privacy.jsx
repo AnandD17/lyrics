@@ -4,15 +4,15 @@ import { ButtonHeader } from '../components/ButtonHeader'
 
 export const Privacy = () => {
     return (
-        <div className='Privacy h-full w-full overflow-hidden'>
+        <div className='Privacy h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
             <SearchBar />
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Privacy'} />
                 </div>
-                <div className='text-left'>
+                <div className='text-left dark:text-[#FAF9F6]'>
                     <div className='font-normal'>
                     What is Lorem Ipsum?
                     </div>

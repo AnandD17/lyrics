@@ -1,21 +1,19 @@
-import React, { useState} from 'react'
+import React from 'react'
 import {AiFillHome,AiFillFire,AiFillClockCircle} from 'react-icons/ai'
 import {BsFillArrowUpCircleFill} from 'react-icons/bs'
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const Sidebar = (props) => {
-    const [mode,setMode] = useState(localStorage.theme=='dark'?'dark':'')
     const navigate = useNavigate();
 
     const handleDir = (dir)=>{
 
         navigate(dir)
     }
-    console.log(mode);
     return (
-        <div className='Sidebar w-full pt-[50px] flex flex-col justify-between h-full'>
+        <div className='Sidebar w-full pt-[50px] flex flex-col justify-between h-full dark:bg-[#2C2C2C]'>
             <div>
-                <div onClick={()=>{handleDir('/')}} target={'_top'} className="flex justify-center">
+                <div onClick={()=>{return(handleDir('/'))}} target={'_top'} className="flex justify-center cursor-pointer">
                     <img src="./assets/logo.svg" alt="" />
                 </div>
 
@@ -24,11 +22,11 @@ export const Sidebar = (props) => {
                 </div>
 
                 <div>
-                    <div onClick={()=>{handleDir('/')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637]'>
+                    <div onClick={()=>{handleDir('/')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
                         <AiFillHome className='h-[30px] w-[30px]'/>
-                        <div className='text-xl dark:text-red'>Home</div>
+                        <div className='text-xl'>Home</div>
                     </div>
-                    <div onClick={()=>{handleDir('/recents')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637]'>
+                    <div onClick={()=>{handleDir('/recents')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
                         <div className='w-[30px]'>
                             <div className='absolute z-50'>
                             <AiFillClockCircle className='h-[26px] w-[26px]'/>
@@ -39,7 +37,7 @@ export const Sidebar = (props) => {
                         </div>
                         <div className='text-xl'>Recently Uploaded</div>
                     </div>
-                    <div onClick={()=>{handleDir('/trending')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637]'>
+                    <div onClick={()=>{handleDir('/trending')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
                         <AiFillFire className='h-[30px] w-[30px]'/>
                         <div className='text-xl '>Trending</div>
                     </div>
@@ -47,21 +45,24 @@ export const Sidebar = (props) => {
 
             </div>
             <div>
-                <div onClick={()=>{handleDir('/contactus')}} className='pl-[30px] py-3 flex gap-[13px]'>
+                <div className='my-[30px] flex justify-center'>
+                    <div className='border w-[80%]'></div>
+                </div>
+                <div onClick={()=>{handleDir('/contactus')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Contact Us</div>
                 </div>
-                <div onClick={()=>{handleDir('/privacy')}} className='pl-[30px] py-3 flex gap-[13px]'>
+                <div onClick={()=>{handleDir('/privacy')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Pivacy Policy</div>
                 </div>
-                <div onClick={()=>{handleDir('/disclaimer')}} className='pl-[30px] py-3 flex gap-[13px]'>
+                <div onClick={()=>{handleDir('/disclaimer')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Disclaimer</div>
                 </div>
-                <div className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <div className={`pl-[30px] py-3 flex gap-[13px] cursor-pointer ${props.mode==='Dark Mode'?'bg-[#EAFEEF] text-[#00C637]':'bg-[#2C2C2C] text-[#AEAEAE]'}`} onClick={()=>{props.changeMode(props.mode==='Dark Mode'?'Light Mode':'Dark Mode')}}>
                     <img src="./assets/icons/trending.svg" alt="home icon" />
-                    <div className='text-xl text-[#AEAEAE]'>Dark Mode</div>
+                    <div className='text-xl'>{props.mode==='Dark Mode'?'Light Mode':'Dark Mode'}</div>
                 </div>
             </div>
 

@@ -9,18 +9,26 @@ import music from './../assets/music.jpg'
 import LoadingBar from "react-top-loading-bar";
 
 
-export const Trending = () => {
+export const Trending = (props) => {
   const [songs,setSongs] = useState([])
   const [progress,setProgress] = useState(0);
+  const [display,setDisplay] = useState('')
+  const [opacity,setOpacity] = useState('');
+
+  
 
   
 
   const  getData = async()=>{
+    setDisplay(false)
     setProgress(75)
+    setOpacity('opacity-50')
     const data =  await axios.get(`${BASE_URL}/trendings`)
     if(data) {
+      setOpacity('')
       setProgress(100)
       setSongs(data.data.data);
+      setDisplay(true)
       console.log(data);
     }
     console.log(data);
@@ -30,7 +38,7 @@ export const Trending = () => {
   },[]);
 
   return (
-    <div className='Trending h-full w-full overflow-hidden'>
+    <div className={`Trending h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
     <LoadingBar
     progress={progress}
     height={3}
@@ -39,19 +47,19 @@ export const Trending = () => {
 
       <SearchBar/>
 
-      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px]'>
+      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Trending'}/>
         </div>
         <div className="grid gap-3 grid-cols-5">
         {songs.map((song) => (
             <div className="col-span-1" key={song.id}>
-              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music}/>
+              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>
             </div>
           ))}
         </div>
         <div className='mt-5 '>
-          <Pagination/>
+          <Pagination display={display}/>
         </div>
       </div>
     </div>

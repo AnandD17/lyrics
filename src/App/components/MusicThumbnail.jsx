@@ -7,10 +7,10 @@ export const MusicThumbnail = (props) => {
     navigate(dir)
   }
   return (
-    <div onClick={()=>{return(handleDir('/lyrics'),props.changeWord(props.slug))}} className='MusicThumbnail h-[300px] rounded-[5px] bg-[white] cursor-pointer' >
+    <div onClick={()=>{return(handleDir('/lyrics'),props.changeWord(props.slug))}} className='MusicThumbnail dark:bg-[#2C2C2C] h-[300px] rounded-[5px] bg-[white] cursor-pointer' >
         <img src={props.img} alt="cant load image" className='h-[66%] w-full rounded-t-[5px]' />
         <div className='w-[75%] bg-[#F6F6F6] h-[3px] m-auto my-5 mt-7'></div>
-        <div className='text-sm text-left pl-5 text-ellipsis'>
+        <div className='text-sm text-left pl-5 text-ellipsis dark:text-[#FAF9F6]'>
             <div className='truncate'>{props.name}</div>
             <div className='opacity-75 font-light truncate'>{props.artist}</div>
         </div>

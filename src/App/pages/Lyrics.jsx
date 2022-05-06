@@ -8,15 +8,19 @@ import LoadingBar from "react-top-loading-bar";
 
 export const Lyrics = (props) => {
 
-    const [song,setSong] = useState('plan-a-by-paulo-londra')
     const [info,setInfo] = useState([]);
     const [progress,setProgress] = useState(0);
+    const [opacity,setOpacity] = useState('');
+
 
     const getData = async() =>{
+        setOpacity('opacity-50')
         setProgress(50)
         const data = await axios.get(`${BASE_URL}/lyrics/${props.name}`);
         if(data){
             setProgress(100)
+            console.log(data);
+            setOpacity('')
             setInfo(data.data.data[0]);
         }
 
@@ -24,10 +28,8 @@ export const Lyrics = (props) => {
     useEffect(()=>{
         getData();
     },[])
-
-    console.log(info);
   return (
-    <div className='Lyrics h-full w-full overflow-hidden'>
+    <div className={`Lyrics h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
         <LoadingBar
     progress={progress}
     height={3}
@@ -36,29 +38,29 @@ export const Lyrics = (props) => {
 
             <SearchBar />
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[200px]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Meet me at our spot'} />
                 </div>
-                <div className="grid gap-4 grid-cols-4 h-full bg-white">
+                <div className="grid gap-4 grid-cols-4 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
                     <div className="col-span-4 h-auto sm:col-span-1">
                         <img src={music} alt="music" className='h-[215px] w-full rounded-[5px]' />
                         <div className='w-[75%] bg-[#F6F6F6] h-[3px] m-auto my-5 mt-7'></div>
                         <div className='flex flex-col gap-2'>
                             <div className='text-sm text-left pl-5'>
-                                <div>Meet me at our spot</div>
+                                <div>{info.title}</div>
                             </div>
                             <div className='text-sm text-left pl-5'>
                                 <div>Artist</div>
-                                <div className='opacity-75 font-light'>Willow Smith</div>
+                                <div className='opacity-75 font-light'>{info.artist}</div>
                             </div>
                             <div className='text-sm text-left pl-5'>
                                 <div>Album</div>
-                                <div className='opacity-75 font-light'>The Anxiety</div>
+                                <div className='opacity-75 font-light'>{info.album}</div>
                             </div>
                             <div className='text-sm text-left pl-5'>
                                 <div>Year</div>
-                                <div className='opacity-75 font-light'>2021</div>
+                                <div className='opacity-75 font-light'>{info.year}</div>
                             </div>
                         </div>
                     </div>

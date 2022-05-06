@@ -11,15 +11,15 @@ export const ContactUs = () => {
     const [message,setMessage] = useState('')
 
   return (
-    <div className='ContactUs h-full w-full overflow-hidden'>
+    <div className='ContactUs h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
             <SearchBar />
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Contact Us'} />
                 </div>
-                <div className='bg-white py-2 px-6'>
+                <div className='bg-white py-2 px-6 dark:bg-[#2C2C2C]'>
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><BsFillPersonFill className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
