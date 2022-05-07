@@ -36,7 +36,7 @@ export const Lyrics = (props) => {
     color="#00C637"
     />
 
-            <SearchBar />
+            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
             <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>

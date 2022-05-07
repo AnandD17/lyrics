@@ -1,6 +1,8 @@
 import React from 'react'
 import {AiFillHome,AiFillFire,AiFillClockCircle} from 'react-icons/ai'
-import {BsFillArrowUpCircleFill} from 'react-icons/bs'
+import {BsFillArrowUpCircleFill,BsSunFill} from 'react-icons/bs'
+import {FiInfo} from 'react-icons/fi'
+import {MdOutlinePrivacyTip} from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
 export const Sidebar = (props) => {
@@ -49,19 +51,19 @@ export const Sidebar = (props) => {
                     <div className='border w-[80%]'></div>
                 </div>
                 <div onClick={()=>{handleDir('/contactus')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <img src="./assets/icons/trending.svg" alt="home icon" />
+                    <img src="./assets/icons/contact.svg" alt="home icon" />
                     <div className='text-xl text-[#AEAEAE]'>Contact Us</div>
                 </div>
                 <div onClick={()=>{handleDir('/privacy')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <img src="./assets/icons/trending.svg" alt="home icon" />
+                    <MdOutlinePrivacyTip className='h-[30px] w-[30px] text-[#AEAEAE]' />
                     <div className='text-xl text-[#AEAEAE]'>Pivacy Policy</div>
                 </div>
                 <div onClick={()=>{handleDir('/disclaimer')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <img src="./assets/icons/trending.svg" alt="home icon" />
+                    <FiInfo className='h-[30px] w-[30px] text-[#AEAEAE]'/>
                     <div className='text-xl text-[#AEAEAE]'>Disclaimer</div>
                 </div>
                 <div className={`pl-[30px] py-3 flex gap-[13px] cursor-pointer ${props.mode==='Dark Mode'?'bg-[#EAFEEF] text-[#00C637]':'bg-[#2C2C2C] text-[#AEAEAE]'}`} onClick={()=>{props.changeMode(props.mode==='Dark Mode'?'Light Mode':'Dark Mode')}}>
-                    <img src="./assets/icons/trending.svg" alt="home icon" />
+                    <BsSunFill className='h-[30px] w-[30px]' />
                     <div className='text-xl'>{props.mode==='Dark Mode'?'Light Mode':'Dark Mode'}</div>
                 </div>
             </div>

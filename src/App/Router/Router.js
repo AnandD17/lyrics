@@ -11,6 +11,7 @@ import { Trending } from '../pages/Trending'
 
 export  const RouterMain = () => {
   const [mode,setMode] = useState(localStorage.theme)
+  const [sidebarClass,setSidebarClass] = useState('hidden');
   console.log(mode);
 
 
@@ -44,17 +45,17 @@ export  const RouterMain = () => {
     <div className='min-h-full'>
         <Router>
             <div className='flex h-[100vh]'>
-                <div className='w-[360px]'>
+                <div className={`lg:w-[360px] w-[260px] lg:block lg:static absolute h-[100vh] ${sidebarClass}`}>
                     <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}}/>
                 </div>
                 <Routes>
-                    <Route exact path="/recents" element={ <Recents changeWord={lyrics_song=>setLyrics_song(lyrics_song)}/>}/>  
+                    <Route exact path="/recents" element={ <Recents/>}/>  
                     <Route exact path="/privacy" element={<Privacy/>} />
                     <Route exact path="/disclaimer" element={<Disclaimer/>} />
                     <Route exact path="/contactus" element={<ContactUs/>} />
                     <Route exact path="/lyrics" element={<Lyrics name={lyrics_song}/>}/>
-                    <Route exact path="/trending" element={<Trending changeWord={lyrics_song=>setLyrics_song(lyrics_song)}/>}/>
-                    <Route path="/" element={<Home changeWord={lyrics_song=>setLyrics_song(lyrics_song)}/>}/>
+                    <Route exact path="/trending" element={<Trending />}/>
+                    <Route path="/" element={<Home toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
                 </Routes>
             </div> 
         </Router>

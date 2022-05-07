@@ -5,7 +5,7 @@ import {BsFillPersonFill} from 'react-icons/bs'
 import {MdEmail} from 'react-icons/md'
 import {AiFillMessage} from 'react-icons/ai'
 
-export const ContactUs = () => {
+export const ContactUs = (props) => {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [message,setMessage] = useState('')
@@ -13,7 +13,7 @@ export const ContactUs = () => {
   return (
     <div className='ContactUs h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
-            <SearchBar />
+            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
             <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>

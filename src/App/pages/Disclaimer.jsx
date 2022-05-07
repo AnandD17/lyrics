@@ -2,11 +2,11 @@
     import { SearchBar } from '../components/SearchBar'
 import { ButtonHeader } from '../components/ButtonHeader'
     
-    export const Disclaimer = () => {
+    export const Disclaimer = (props) => {
       return (
         <div className='Disclaimer h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
-            <SearchBar />
+            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
             <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>

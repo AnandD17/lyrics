@@ -45,7 +45,7 @@ export const Trending = (props) => {
     color="#00C637"
     />
 
-      <SearchBar/>
+      <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
       <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
         <div className='flex justify-start mb-4'>
