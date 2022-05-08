@@ -5,23 +5,30 @@ import music from './../assets/music.jpg'
 import axios from 'axios'
 import { BASE_URL } from '../utils/apiConstant'
 import LoadingBar from "react-top-loading-bar";
+import { useLocation } from 'react-router-dom'
 
 export const Lyrics = (props) => {
 
     const [info,setInfo] = useState([]);
+    const [tabs,setTabs] = useState('crt');
     const [progress,setProgress] = useState(0);
     const [opacity,setOpacity] = useState('');
+    const [lyricsName , setLyricsName] = useState('juice-wrld-hide-by-juice-wrld-seezyn')
+    const location = useLocation();
 
 
     const getData = async() =>{
         setOpacity('opacity-50')
+        console.log('location is');
+        console.log(location);
         setProgress(50)
-        const data = await axios.get(`${BASE_URL}/lyrics/${props.name}`);
+        const data = await axios.get(`${BASE_URL}${location.pathname}`);
         if(data){
             setProgress(100)
             console.log(data);
             setOpacity('')
             setInfo(data.data.data[0]);
+            setTabs(info.lyrics_crt_file!==''?'crt':info.lyrics!==''?'text':'NA')
         }
 
     }
@@ -38,7 +45,7 @@ export const Lyrics = (props) => {
 
             <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C] lg:pb-[10px] pb-[180px]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Meet me at our spot'} />
                 </div>
@@ -62,19 +69,32 @@ export const Lyrics = (props) => {
                                 <div>Year</div>
                                 <div className='opacity-75 font-light'>{info.year}</div>
                             </div>
+                            {info.lyrics_crt_file&&tabs==='crt'&&<div className='w-full'>
+                                <a href={`${BASE_URL}/download${location.pathname.slice(7)}`} className='bg-[#00C637] px-4 text-white py-2 w-[100%] rounded-[5px]'>Download Lyrics</a>
+                            </div>}
+                            
                         </div>
                     </div>
                     <div className="col-span-4 sm:col-span-3 text-center">
-                        <div className='flex gap-4'>
-                        {info.lyrics_crt_file&&<ButtonHeader title={'CRT File'} />}
-                        {info.lyrics&&<ButtonHeader title={'Text'} />}
+                        <div className='flex flex-wrap gap-4'>
+                            <div onClick={()=>{setTabs('crt')}}>
+                                {info.lyrics_crt_file&&<ButtonHeader title={'CRT File'}/>}
+                            </div>
+                            <div onClick={()=>{setTabs('text')}}>
+                                {info.lyrics&&<ButtonHeader title={'Text'} />}
+                            </div>
+                            {tabs==='NA'&&<ButtonHeader title={'No Lyrics and CRT'} />}
                         
                         
                         </div>
                         
-                        <div className='whitespace-pre text-left overflow-auto pb-[100px]'>
+                        {tabs==='crt'&&<div className='whitespace-pre text-left overflow-auto pb-[100px]'>
                             {info.lyrics_crt_file}
-                        </div>
+                        </div>}
+                        {tabs==='text'&&<div className='whitespace-pre text-left overflow-auto pb-[100px]'>
+                            {info.lyrics}
+                        </div>}
+                        
                         
                     </div>
                 </div>

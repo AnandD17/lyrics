@@ -38,7 +38,7 @@ export const Trending = (props) => {
   },[]);
 
   return (
-    <div className={`Trending h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
+    <div className={`Trending h-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
     <LoadingBar
     progress={progress}
     height={3}
@@ -47,11 +47,11 @@ export const Trending = (props) => {
 
       <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 pb-[120px] dark:bg-[#2C2C2C]'>
+      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Trending'}/>
         </div>
-        <div className="grid gap-3 grid-cols-5">
+        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
         {songs.map((song) => (
             <div className="col-span-1" key={song.id}>
               <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>

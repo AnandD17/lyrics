@@ -1,19 +1,20 @@
 import React from 'react'
 import {AiFillHome,AiFillFire,AiFillClockCircle} from 'react-icons/ai'
-import {BsFillArrowUpCircleFill,BsSunFill} from 'react-icons/bs'
+import {BsFillArrowUpCircleFill,BsSunFill,BsGlobe} from 'react-icons/bs'
 import {FiInfo} from 'react-icons/fi'
 import {MdOutlinePrivacyTip} from 'react-icons/md'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export const Sidebar = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleDir = (dir)=>{
 
         navigate(dir)
     }
     return (
-        <div className='Sidebar w-full pt-[50px] flex flex-col justify-between h-full dark:bg-[#2C2C2C]'>
+        <div className='Sidebar w-full pt-[50px] flex flex-col justify-between h-full bg-white dark:bg-[#2C2C2C]'>
             <div>
                 <div onClick={()=>{return(handleDir('/'))}} target={'_top'} className="flex justify-center cursor-pointer">
                     <img src="./assets/logo.svg" alt="" />
@@ -24,11 +25,11 @@ export const Sidebar = (props) => {
                 </div>
 
                 <div>
-                    <div onClick={()=>{handleDir('/')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
+                    <div onClick={()=>{handleDir('/')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
                         <AiFillHome className='h-[30px] w-[30px]'/>
                         <div className='text-xl'>Home</div>
                     </div>
-                    <div onClick={()=>{handleDir('/recents')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
+                    <div onClick={()=>{handleDir('/recents')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/recents'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF]':'text-[#AEAEAE]'}` }>
                         <div className='w-[30px]'>
                             <div className='absolute z-50'>
                             <AiFillClockCircle className='h-[26px] w-[26px]'/>
@@ -39,7 +40,7 @@ export const Sidebar = (props) => {
                         </div>
                         <div className='text-xl'>Recently Uploaded</div>
                     </div>
-                    <div onClick={()=>{handleDir('/trending')}} className='pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] text-[#AEAEAE] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer'>
+                    <div onClick={()=>{handleDir('/trending')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
                         <AiFillFire className='h-[30px] w-[30px]'/>
                         <div className='text-xl '>Trending</div>
                     </div>
@@ -51,7 +52,7 @@ export const Sidebar = (props) => {
                     <div className='border w-[80%]'></div>
                 </div>
                 <div onClick={()=>{handleDir('/contactus')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <img src="./assets/icons/contact.svg" alt="home icon" />
+                    <BsGlobe className='h-[30px] w-[30px] text-[#AEAEAE]'/>
                     <div className='text-xl text-[#AEAEAE]'>Contact Us</div>
                 </div>
                 <div onClick={()=>{handleDir('/privacy')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
