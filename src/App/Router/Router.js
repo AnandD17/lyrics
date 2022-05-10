@@ -11,9 +11,8 @@ import { Trending } from '../pages/Trending'
 import { SearchLyrics } from '../pages/SearchLyrics'
 
 export  const RouterMain = () => {
-  const [mode,setMode] = useState(localStorage.theme)
+  const [mode,setMode] = useState('')
   const [sidebarClass,setSidebarClass] = useState('hidden');
-  console.log(mode);
 
 
     const [lyrics_song,setLyrics_song] = useState('');
@@ -45,24 +44,26 @@ export  const RouterMain = () => {
   return (
     <div className='min-h-full'>
         <Router>
-            <div className='flex h-[100vh] w-[100vw]'>
-                <div className={`transition-all lg:w-[350px] lg:min-w-[350px] min-w-[260px] w-[260px] lg:block lg:static absolute h-[100vh] z-50 ${sidebarClass}`}>
-                    <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}}/>
+            <div className='flex h-[100vh] w-[100vw] bg-white dark:bg-[#2C2C2C]'>
+                <div className={`transition-all lg:w-[330px] lg:min-w-[330px] z-20 min-w-[240px] w-[240px] lg:block lg:static absolute h-[100vh] lg:transform-none sm:opacity-100 ${sidebarClass=='hidden'?'-translate-x-full opacity-0':'opacity-100'}`}>
+                    <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}} toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>
                 </div>
-                <div className='lg:flex w-full'>
-                  <div className={` overlay bg-black absolute opacity-50 z-40 lg:hidden h-full lg:transform-none w-full ${sidebarClass}`} onClick={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}>
+                <div className='flex w-full  justify-center'>
+                  <div className='lg:flex max-w-[2000px] min-w-full'>
+                    <div className={` overlay bg-black absolute opacity-50 z-10 lg:hidden h-full lg:transform-none w-full ${sidebarClass}`} onClick={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}>
 
-                  </div>
-                  <Routes>
-                      <Route exact path="/search/:id" element={<SearchLyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
-                      <Route exact path="/lyrics/:id" element={<Lyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
-                      <Route exact path="/recents" element={ <Recents toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>  
-                      <Route exact path="/privacy" element={<Privacy toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
-                      <Route exact path="/disclaimer" element={<Disclaimer toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
-                      <Route exact path="/contactus" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
-                      <Route exact path="/trending" element={<Trending toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
-                      <Route exact path={`/`} element={<Home toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
-                  </Routes>
+                    </div>
+                    <Routes>
+                        <Route exact path="/search/:id" element={<SearchLyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
+                        <Route exact path="/lyrics/:id" element={<Lyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
+                        <Route exact path="/recents" element={ <Recents toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>  
+                        <Route exact path="/privacy" element={<Privacy toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
+                        <Route exact path="/disclaimer" element={<Disclaimer toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
+                        <Route exact path="/contactus" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
+                        <Route exact path="/trending" element={<Trending toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
+                        <Route exact path={`/`} element={<Home toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
+                    </Routes>
+                    </div>
                 </div>
             </div> 
         </Router>

@@ -38,7 +38,7 @@ export const Trending = (props) => {
   },[]);
 
   return (
-    <div className={`Trending h-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
+    <div className={`Trending h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
     <LoadingBar
     progress={progress}
     height={3}

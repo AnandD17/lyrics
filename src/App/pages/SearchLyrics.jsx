@@ -15,7 +15,6 @@ export const SearchLyrics = (props) => {
   const [display,setDisplay] = useState('')
   const [opacity,setOpacity] = useState('');
   const location = useLocation();
-  
 
   const  getData = async()=>{
       console.log(location);
@@ -33,7 +32,7 @@ export const SearchLyrics = (props) => {
   }
   useEffect(()=> {
     getData();
-  },[]);
+  },[location.pathname]);
 
   return (
     <div className={`Recents h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
@@ -47,7 +46,7 @@ export const SearchLyrics = (props) => {
 
       <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
         <div className='flex justify-start mb-4'>
-          <ButtonHeader title={location.pathname.slice(8)}/>
+          <ButtonHeader title={location.pathname.slice(8).replace('%20',' ')}/>
         </div>
         
         <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">

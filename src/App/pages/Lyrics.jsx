@@ -50,8 +50,8 @@ export const Lyrics = (props) => {
                     <ButtonHeader title={'Meet me at our spot'} />
                 </div>
                 <div className="grid gap-4 grid-cols-4 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
-                    <div className="col-span-4 h-auto sm:col-span-1">
-                        <img src={music} alt="music" className='h-[215px] w-full rounded-[5px]' />
+                    <div className="col-span-4 h-auto sm:col-span-1 pr-2">
+                        <img src={info.poster?info.poster:music} alt="music" className='h-[215px] w-full rounded-[5px]' />
                         <div className='w-[75%] bg-[#F6F6F6] h-[3px] m-auto my-5 mt-7'></div>
                         <div className='flex flex-col gap-2'>
                             <div className='text-sm text-left pl-5'>
@@ -88,10 +88,10 @@ export const Lyrics = (props) => {
                         
                         </div>
                         
-                        {tabs==='crt'&&<div className='whitespace-pre text-left overflow-auto pb-[100px]'>
+                        {tabs==='crt'&&<div className='whitespace-pre text-left pb-[100px]'>
                             {info.lyrics_crt_file}
                         </div>}
-                        {tabs==='text'&&<div className='whitespace-pre text-left overflow-auto pb-[100px]'>
+                        {tabs==='text'&&<div className='whitespace-pre text-left pb-[100px]'>
                             {info.lyrics}
                         </div>}
                         

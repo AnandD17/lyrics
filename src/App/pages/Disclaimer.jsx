@@ -12,7 +12,7 @@ import { ButtonHeader } from '../components/ButtonHeader'
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Disclaimer'} />
                 </div>
-                <div className='text-left dark:text-[#FAF9F6]'>
+                <div className='text-left dark:text-[#FAF9F6]  dark:bg-[#2C2C2C] bg-[#FFFFFF] p-4 rounded-[5px]'>
                     <div className='font-normal'>
                     What is Lorem Ipsum?
                     </div>
