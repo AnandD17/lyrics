@@ -88,8 +88,11 @@ export const Lyrics = (props) => {
                         
                         </div>
                         
-                        {tabs==='crt'&&<div className='whitespace-pre text-left pb-[100px]'>
+                        {tabs==='crt'&&<div className='whitespace-pre-line text-left pb-[100px]'>
+                            <div className=''>
                             {info.lyrics_crt_file}
+
+                            </div>
                         </div>}
                         {tabs==='text'&&<div className='whitespace-pre text-left pb-[100px]'>
                             {info.lyrics}

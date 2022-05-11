@@ -5,6 +5,8 @@ import {FiInfo} from 'react-icons/fi'
 import {MdOutlinePrivacyTip} from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
 import logo from './../assets/logo.png'
+import cont from './../assets/contact.png'
+import lock from './../assets/lock.png'
 
 export const Sidebar = (props) => {
     const navigate = useNavigate();
@@ -15,7 +17,7 @@ export const Sidebar = (props) => {
         navigate(dir)
     }
     return (
-        <div className='Sidebar w-full lg:pt-[50px] flex flex-col justify-between h-full bg-white dark:bg-[#2C2C2C]'>
+        <div className='Sidebar w-full lg:pt-[50px] flex flex-col justify-between h-[100vh] bg-white dark:bg-[#2C2C2C]'>
             <div>
                 <div onClick={()=>{return(handleDir('/'))}} target={'_top'} className="hidden lg:flex justify-center cursor-pointer">
                     <img src={logo} alt="" className='sm:h-[90px] sm:w-[90px] h-[60px] w-[60px]'/>
@@ -53,11 +55,11 @@ export const Sidebar = (props) => {
                     <div className='border w-[80%]'></div>
                 </div>
                 <div onClick={()=>{handleDir('/contactus')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <BsGlobe className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
+                    <img src={cont} className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Contact Us</div>
                 </div>
                 <div onClick={()=>{handleDir('/privacy')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
-                    <MdOutlinePrivacyTip className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]' />
+                    <img src={lock} className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Pivacy Policy</div>
                 </div>
                 <div onClick={()=>{handleDir('/disclaimer')}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
