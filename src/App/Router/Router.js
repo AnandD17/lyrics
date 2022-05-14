@@ -15,7 +15,7 @@ export  const RouterMain = () => {
   const [sidebarClass,setSidebarClass] = useState('hidden');
 
 
-    const [lyrics_song,setLyrics_song] = useState('');
+    // const [lyrics_song,setLyrics_song] = useState('');
 
     const setInitialTheme = () =>{
       if(JSON.parse(localStorage.getItem('mode'))==='Dark Mode'||JSON.parse(localStorage.getItem('mode'))==='Light Mode') return;
@@ -63,12 +63,12 @@ export  const RouterMain = () => {
   return (
     <div className='min-h-full bg-white dark:bg-[#2C2C2C]'>
         <Router>
-            <div className='flex h-[100vh] w-[100vw] max-w-[2500px] m-auto bg-white dark:bg-[#2C2C2C]'>
-                <div className={`transition-all lg:w-[330px] lg:min-w-[330px] lg:z-auto z-20 min-w-[240px] w-[240px] lg:block lg:static absolute h-full lg:transform-none sm:opacity-100 ${sidebarClass=='hidden'?'-translate-x-full opacity-0':'opacity-100'}`}>
+            <div className='flex h-[100vh] w-[100vw] max-w-[1800px] m-auto bg-white dark:bg-[#2C2C2C]'>
+                <div className={`transition-all lg:w-[330px] lg:min-w-[330px] lg:z-auto z-20 min-w-[240px] w-[240px] lg:block lg:static absolute h-full lg:transform-none sm:opacity-100 ${sidebarClass==='hidden'?'-translate-x-full opacity-0':'opacity-100'}`}>
                     <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}} toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>
                 </div>
                 <div className='flex w-full  justify-center'>
-                  <div className='lg:flex max-w-[2000px] min-w-full'>
+                  <div className='lg:flex max-w-[1100px] min-w-full'>
                     <div className={` overlay bg-black absolute opacity-50 z-10 lg:hidden h-full lg:transform-none w-full ${sidebarClass}`} onClick={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}>
 
                     </div>

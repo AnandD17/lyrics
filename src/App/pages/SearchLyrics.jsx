@@ -46,7 +46,7 @@ export const SearchLyrics = (props) => {
 
       <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
         <div className='flex justify-start mb-4'>
-          <ButtonHeader title={location.pathname.slice(8).replace('%20',' ')}/>
+          <ButtonHeader title={location.pathname.slice(8).replace(/%20/g,' ')}/>
         </div>
         
         <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
@@ -55,9 +55,6 @@ export const SearchLyrics = (props) => {
               <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>
             </div>
           ))}
-        </div>
-        <div className='mt-5 '>
-          <Pagination display={display}/>
         </div>
       </div>
     </div>

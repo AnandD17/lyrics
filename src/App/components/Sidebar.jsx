@@ -2,7 +2,8 @@ import React from 'react'
 import {AiFillHome,AiFillFire,AiFillClockCircle} from 'react-icons/ai'
 import {BsFillArrowUpCircleFill,BsSunFill,BsGlobe} from 'react-icons/bs'
 import {FiInfo} from 'react-icons/fi'
-import {MdOutlinePrivacyTip} from 'react-icons/md'
+import {GoFlame} from 'react-icons/go'
+import {MdOutlinePrivacyTip,MdOutlineTrendingUp} from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
 import logo from './../assets/logo.png'
 import cont from './../assets/contact.png'
@@ -44,7 +45,7 @@ export const Sidebar = (props) => {
                         <div className='sm:text-xl text-base flex items-center'>Recently Uploaded</div>
                     </div>
                     <div onClick={()=>{handleDir('/trending')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
-                        <AiFillFire className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/>
+                        <GoFlame className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/>
                         <div className='sm:text-xl text-base flex items-center '>Trending</div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@ export const Sidebar = (props) => {
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Disclaimer</div>
                 </div>
                 <div className={`pl-[30px] py-3 flex gap-[13px] cursor-pointer ${props.mode==='Dark Mode'?'bg-[#EAFEEF] text-[#00C637]':'bg-[#2C2C2C] text-[#AEAEAE]'}`} onClick={()=>{props.changeMode(props.mode==='Dark Mode'?'Light Mode':'Dark Mode')}}>
-                    <BsSunFill className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]' />
+                    <BsSunFill className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]' />
                     <div className='sm:text-xl text-base flex items-center'>{props.mode==='Dark Mode'?'Light Mode':'Dark Mode'}</div>
                 </div>
             </div>
