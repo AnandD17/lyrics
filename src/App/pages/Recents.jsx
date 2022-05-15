@@ -2,24 +2,35 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ButtonHeader } from '../components/ButtonHeader'
 import { MusicThumbnail } from '../components/MusicThumbnail'
-import { Pagination } from '../components/Pagination'
 import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
+// import { Pagination } from '../components/Pagination'
 import music from './../assets/music.jpg'
+import PaginationItem from '@mui/material/PaginationItem';
 import LoadingBar from "react-top-loading-bar";
+import { Pagination } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export const Recents = (props) => {
   const [songs,setSongs] = useState([])
   const [progress,setProgress] = useState(0);
   const [display,setDisplay] = useState('')
   const [opacity,setOpacity] = useState('');
+  const [page, setPage] = useState(1);
+
+  const handleChange = (e,value) => {
+    setPage(value);
+    console.log(value);
+  }; 
+
   
 
   const  getData = async()=>{
     setDisplay(false)
     setProgress(75)
     setOpacity('opacity-50')
-    const data =  await axios.get(`${BASE_URL}/recent_uploads?page=1`)
+    const data =  await axios.get(`${BASE_URL}/recent_uploads?page=${page}`)
     if(data) {
       setOpacity('')
       setProgress(100)
@@ -30,7 +41,7 @@ export const Recents = (props) => {
   }
   useEffect(()=> {
     getData();
-  },[]);
+  },[page]);
 
   return (
     <div className={`Recents h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
@@ -54,8 +65,20 @@ export const Recents = (props) => {
             </div>
           ))}
         </div>
-        <div className='mt-5 '>
-          <Pagination display={display}/>
+        <div className='mt-5 flex justify-center dark:text-[#FAF9F6] text-black'>
+          {/* <Pagination count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}/> */}
+          {/* <Pagination/> */}
+          <Pagination
+        count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}
+        renderItem={(item) => (
+          <PaginationItem
+            components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+            className={{color:'inherit'}}
+            sx={{ color: 'ineherit'}}
+            {...item}
+          />
+        )}
+      />
         </div>
       </div>
     </div>

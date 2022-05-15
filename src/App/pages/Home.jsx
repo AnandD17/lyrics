@@ -58,7 +58,7 @@ export const Home = (props) => {
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
 
-      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] w-full dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[100px] pb-[250px]`}>
+      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] w-full dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px]`}>
         {/* <div>
           <div>
             <img src={carousol} alt="carousol" height={430} className='w-full' />

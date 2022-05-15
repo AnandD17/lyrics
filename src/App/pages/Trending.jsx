@@ -58,9 +58,6 @@ export const Trending = (props) => {
             </div>
           ))}
         </div>
-        <div className='mt-5 '>
-          <Pagination display={display}/>
-        </div>
       </div>
     </div>
   )
