@@ -74,7 +74,9 @@ export const Recents = (props) => {
           <PaginationItem
             components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
             className={{color:'inherit'}}
-            sx={{ color: 'ineherit'}}
+            color="secondary"
+            variant="text"
+            classes={{color:'light'}}
             {...item}
           />
         )}
