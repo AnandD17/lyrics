@@ -4,20 +4,24 @@ import { ButtonHeader } from '../components/ButtonHeader'
 import { MusicThumbnail } from '../components/MusicThumbnail'
 import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
-// import { Pagination } from '../components/Pagination'
+import { Pagination } from '../components/Pagination'
 import music from './../assets/music.jpg'
 import PaginationItem from '@mui/material/PaginationItem';
 import LoadingBar from "react-top-loading-bar";
-import { Pagination } from '@mui/material'
+// import { Pagination } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useLocation } from 'react-router-dom'
 
 export const Recents = (props) => {
+  const location = useLocation();
   const [songs,setSongs] = useState([])
   const [progress,setProgress] = useState(0);
   const [display,setDisplay] = useState('')
   const [opacity,setOpacity] = useState('');
   const [page, setPage] = useState(1);
+
+  console.log(page);
 
   const handleChange = (e,value) => {
     setPage(value);
@@ -65,10 +69,10 @@ export const Recents = (props) => {
             </div>
           ))}
         </div>
-        <div className='mt-5 flex justify-center dark:text-[#FAF9F6] text-black'>
+        <div className={`mt-5 flex justify-center dark:text-[#FAF9F6] text-black ${display===false?'hidden':''}`}>
           {/* <Pagination count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}/> */}
-          {/* <Pagination/> */}
-          <Pagination
+          <Pagination changePage={(page)=>{setPage(page)}} page = {page}/>
+          {/* <Pagination
         count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}
         renderItem={(item) => (
           <PaginationItem
@@ -80,7 +84,7 @@ export const Recents = (props) => {
             {...item}
           />
         )}
-      />
+      /> */}
         </div>
       </div>
     </div>

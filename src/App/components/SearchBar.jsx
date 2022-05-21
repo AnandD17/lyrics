@@ -22,7 +22,7 @@ export const SearchBar = (props) => {
         <div className='text-[#00C637] flex items-center lg:hidden p-5'>
           <FiMenu className={'h-[25px] w-[25px]'} onClick={()=>{props.toggleSideBar()}}/>
           <div className='flex justify-content-center relative w-[100vw]'>
-            <img src={logo} alt="" className='h-[60px] w-[60px] m-auto' onClick={()=>{navigate(`/`)}}/>
+            <img src={logo} alt="" className='h-[60px] w-auto m-auto' onClick={()=>{navigate(`/`)}}/>
           </div>
         </div>
         <div className=' flex h-[40px] sm:h-[50px] gap-[10px] px-2 bg-[#F5F5F5] w-[96%] m-auto my-5 rounded-[5px] items-center'>
