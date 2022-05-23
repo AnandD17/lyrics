@@ -2,56 +2,70 @@ import React, { useEffect, useState } from 'react'
 import { SearchBar } from '../components/SearchBar'
 import { ButtonHeader } from '../components/ButtonHeader'
 import music from './../assets/music.jpg'
+import logo from './../assets/lyrics.png'
 import axios from 'axios'
 import { BASE_URL } from '../utils/apiConstant'
 import LoadingBar from "react-top-loading-bar";
 import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
+
 
 export const Lyrics = (props) => {
 
-    const [info,setInfo] = useState([]);
-    const [tabs,setTabs] = useState('crt');
-    const [progress,setProgress] = useState(0);
-    const [opacity,setOpacity] = useState('');
-    const [lyricsName , setLyricsName] = useState('juice-wrld-hide-by-juice-wrld-seezyn')
+    const [info, setInfo] = useState([]);
+    const [tabs, setTabs] = useState('crt');
+    const [progress, setProgress] = useState(0);
+    const [opacity, setOpacity] = useState('');
+    const [lyricsName, setLyricsName] = useState('juice-wrld-hide-by-juice-wrld-seezyn')
     const location = useLocation();
+    const [display, setDisplay] = useState(false);
 
 
-    const getData = async() =>{
+
+    const getData = async () => {
         setOpacity('opacity-50')
+        setDisplay('hidden')
         console.log('location is');
         console.log(location);
         setProgress(50)
         const data = await axios.get(`${BASE_URL}${location.pathname}`);
-        if(data){
+        if (data) {
             setProgress(100)
             console.log(data);
             setOpacity('')
+            setDisplay('')
             setInfo(data.data.data[0]);
-            setTabs(info.lyrics_crt_file!==''?'crt':info.lyrics!==''?'text':'NA')
+            setTabs(info.lyrics_crt_file !== '' ? 'crt' : info.lyrics !== '' ? 'text' : 'NA')
         }
 
     }
-    useEffect(()=>{
+    useEffect(() => {
         getData();
-    },[])
-  return (
-    <div className={`Lyrics h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
-        <LoadingBar
-    progress={progress}
-    height={3}
-    color="#00C637"
-    />
+    }, [])
+    return (
+        <div className={`Lyrics h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
 
-            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C] lg:pb-[10px] pb-[180px]'>
+            <Helmet>
+                <title> {`${info.title} lyrics by ${info.artist}`} | Revaltronics</title>
+            </Helmet>
+
+
+            <LoadingBar
+                progress={progress}
+                height={3}
+                color="#00C637"
+            />
+
+            <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
+
+            <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C] lg:pb-[10px] pb-[180px] ${display}`}>
                 <div className='flex justify-start my-4 mb-10'>
-                    <ButtonHeader title={'Meet me at our spot'} />
+                    <ButtonHeader title={info.title} />
                 </div>
-                <div className="grid gap-4 grid-cols-4 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
-                    <div className="col-span-4 h-auto sm:col-span-1 pr-2">
-                        <img src={info.poster?info.poster:music} alt="music" className='h-[215px] w-full rounded-[5px]' />
+                <div className="grid gap-4 p-4 grid-cols-10 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
+                    <div className="col-span-10 h-auto sm:col-span-2 pr-2">
+                        <img src={info.poster ? info.poster : logo} alt="music" className='aspect-square w-full rounded-[5px]' />
                         <div className='w-[75%] bg-[#F6F6F6] h-[3px] m-auto my-5 mt-7'></div>
                         <div className='flex flex-col gap-2'>
                             <div className='text-sm text-left pl-5'>
@@ -69,39 +83,39 @@ export const Lyrics = (props) => {
                                 <div>Year</div>
                                 <div className='opacity-75 font-light'>{info.year}</div>
                             </div>
-                            {info.lyrics_crt_file&&tabs==='crt'&&<div className='w-full'>
-                                <a href={`${BASE_URL}/download${location.pathname.slice(7)}`} className='bg-[#00C637] px-4 text-white py-2 w-[100%] rounded-[5px]'>Download Lyrics</a>
-                            </div>}
-                            
+                            {info.lyrics_crt_file && tabs === 'crt' &&
+                                <a href={`${BASE_URL}/download${location.pathname.slice(7)}`} className='bg-[#00C637] px-4 text-white py-2 mx-0 rounded-[5px]'>Download Lyrics</a>
+                            }
+
                         </div>
                     </div>
-                    <div className="col-span-4 sm:col-span-3 text-center">
+                    <div className="col-span-10 sm:col-span-8 text-center">
                         <div className='flex flex-wrap gap-4'>
-                            <div onClick={()=>{setTabs('crt')}}>
-                                {info.lyrics_crt_file&&<ButtonHeader title={'CRT File'}/>}
+                            <div onClick={() => { setTabs('crt') }}>
+                                {info.lyrics_crt_file && <ButtonHeader title={'CRT File'} />}
                             </div>
-                            <div onClick={()=>{setTabs('text')}}>
-                                {info.lyrics&&<ButtonHeader title={'Text'} />}
+                            <div onClick={() => { setTabs('text') }}>
+                                {info.lyrics && <ButtonHeader title={'Text'} />}
                             </div>
-                            {tabs==='NA'&&<ButtonHeader title={'No Lyrics and CRT'} />}
-                        
-                        
+                            {tabs === 'NA' && <ButtonHeader title={'No Lyrics and CRT'} />}
+
+
                         </div>
-                        
-                        {tabs==='crt'&&<div className='whitespace-pre-line text-left pb-[100px]'>
+
+                        {tabs === 'crt' && <div className='whitespace-pre-line text-left pb-[100px]'>
                             <div className=''>
-                            {info.lyrics_crt_file}
+                                {info.lyrics_crt_file}
 
                             </div>
                         </div>}
-                        {tabs==='text'&&<div className='whitespace-pre text-left pb-[100px]'>
+                        {tabs === 'text' && <div className='whitespace-pre text-left pb-[100px]'>
                             {info.lyrics}
                         </div>}
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
         </div>
-  )
+    )
 }

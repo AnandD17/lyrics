@@ -12,12 +12,14 @@ import LoadingBar from "react-top-loading-bar";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
+
 
 export const Recents = (props) => {
   const location = useLocation();
   const [songs,setSongs] = useState([])
   const [progress,setProgress] = useState(0);
-  const [display,setDisplay] = useState('')
+  const [display,setDisplay] = useState(false)
   const [opacity,setOpacity] = useState('');
   const [page, setPage] = useState(1);
 
@@ -57,7 +59,7 @@ export const Recents = (props) => {
 
       <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
+      <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C] ${display===false?'hidden':''}`}>
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Recently Added'}/>
         </div>

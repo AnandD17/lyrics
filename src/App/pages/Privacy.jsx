@@ -1,10 +1,15 @@
 import React from 'react'
 import { SearchBar } from '../components/SearchBar'
 import { ButtonHeader } from '../components/ButtonHeader'
+import { Helmet } from 'react-helmet';
+
 
 export const Privacy = (props) => {
     return (
         <div className='Privacy h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
+            <Helmet>
+                <title> Privacy | Revaltronics</title>
+            </Helmet>
 
             <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 

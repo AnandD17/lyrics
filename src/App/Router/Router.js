@@ -68,7 +68,7 @@ export  const RouterMain = () => {
                     <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}} toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>
                 </div>
                 <div className='flex w-full  justify-center'>
-                  <div className='lg:flex max-w-[1100px] min-w-full'>
+                  <div className='lg:flex 2xl:w-[1320px] xl:w-[1140px] lg:w-[960px] md:w-[720px] sm:w-[540px] w-full'>
                     <div className={` overlay bg-black absolute opacity-50 z-10 lg:hidden h-full lg:transform-none w-full ${sidebarClass}`} onClick={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}>
 
                     </div>

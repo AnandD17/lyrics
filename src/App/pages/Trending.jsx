@@ -7,6 +7,8 @@ import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
 import music from './../assets/music.jpg'
 import LoadingBar from "react-top-loading-bar";
+import { Helmet } from 'react-helmet';
+
 
 
 export const Trending = (props) => {
@@ -39,6 +41,10 @@ export const Trending = (props) => {
 
   return (
     <div className={`Trending h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
+
+<Helmet>
+        <title> Trendings | Revaltronics</title>
+      </Helmet>
     <LoadingBar
     progress={progress}
     height={3}
@@ -47,7 +53,8 @@ export const Trending = (props) => {
 
       <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-      <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
+      
+      <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C] ${display===false?'hidden':''}`}>
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Trending'}/>
         </div>

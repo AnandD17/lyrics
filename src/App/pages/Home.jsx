@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+import { Helmet } from 'react-helmet';
 
 
 
@@ -22,6 +23,7 @@ export const Home = (props) => {
   const [slider, setSlider] = useState([])
   const [progress, setProgress] = useState(0);
   const [opacity, setOpacity] = useState('');
+  const [display, setDisplay] = useState(false);
 
 
 
@@ -33,6 +35,7 @@ export const Home = (props) => {
       setProgress(100)
       setOpacity('');
       console.log(data);
+      setDisplay(true)
       setSongs(data.data.data.recent_songs);
       setAlbums(data.data.data.recent_albums);
       setSlider(data.data.data.sliders);
@@ -48,6 +51,9 @@ export const Home = (props) => {
 
   return (
     <div className={`Home h-full w-full max-w-full overflow-hidden dark:bg-[#2C2C2C] ${opacity}`}>
+      <Helmet>
+        <title>Home | Revaltronics</title>
+      </Helmet>
       <LoadingBar
         progress={progress}
         height={3}
@@ -58,7 +64,7 @@ export const Home = (props) => {
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
 
-      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] w-full dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px]`}>
+      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] w-full dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
         {/* <div>
           <div>
             <img src={carousol} alt="carousol" height={430} className='w-full' />

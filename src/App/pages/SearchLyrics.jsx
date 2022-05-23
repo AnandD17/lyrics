@@ -8,6 +8,8 @@ import { SearchBar } from '../components/SearchBar'
 import music from './../assets/music.jpg'
 import LoadingBar from "react-top-loading-bar";
 import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
+
 
 export const SearchLyrics = (props) => {
     const [songs,setSongs] = useState([])
@@ -36,6 +38,11 @@ export const SearchLyrics = (props) => {
 
   return (
     <div className={`Recents h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
+      
+
+      <Helmet>
+        <title>{`${location.pathname.slice(8).replace(/%20/g,' ')} | Revaltronics`}</title>
+      </Helmet>
       <LoadingBar
     progress={progress}
     height={3}

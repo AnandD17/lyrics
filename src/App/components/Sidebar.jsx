@@ -21,7 +21,7 @@ export const Sidebar = (props) => {
         <div className='Sidebar w-full lg:pt-[50px] flex flex-col justify-between h-[100vh] bg-white dark:bg-[#2C2C2C]'>
             <div>
                 <div onClick={()=>{return(handleDir('/'))}} target={'_top'} className="hidden lg:flex justify-center cursor-pointer">
-                    <img src={logo} alt="" className='sm:h-[90px] sm:w-full h-[60px] w-auto'/>
+                    <img src={logo} alt="" className='w-[200px] h-auto'/>
                 </div>
 
                 <div className='my-[30px] justify-center hidden lg:flex'>

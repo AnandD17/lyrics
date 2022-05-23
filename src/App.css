@@ -40,3 +40,30 @@
     transform: rotate(360deg);
   }
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00C637;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (min-width : 1000px) {
+  ::-webkit-scrollbar {
+    position: absolute;
+    right: 1px;
+  }
+}

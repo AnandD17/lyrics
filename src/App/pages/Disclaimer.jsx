@@ -1,12 +1,18 @@
-    import React from 'react'
-    import { SearchBar } from '../components/SearchBar'
+import React from 'react'
+import { SearchBar } from '../components/SearchBar'
 import { ButtonHeader } from '../components/ButtonHeader'
-    
-    export const Disclaimer = (props) => {
-      return (
+import { Helmet } from 'react-helmet';
+
+
+export const Disclaimer = (props) => {
+    return (
         <div className='Disclaimer h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
-            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
+            <Helmet>
+                <title>Disclaimer | Revaltronics</title>
+            </Helmet>
+
+            <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
 
             <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>
@@ -14,7 +20,7 @@ import { ButtonHeader } from '../components/ButtonHeader'
                 </div>
                 <div className='text-left dark:text-[#FAF9F6]  dark:bg-[#2C2C2C] bg-[#FFFFFF] p-4 rounded-[5px]'>
                     <div className='font-normal'>
-                    What is Lorem Ipsum?
+                        What is Lorem Ipsum?
                     </div>
                     <div className='font-light'>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -26,7 +32,7 @@ import { ButtonHeader } from '../components/ButtonHeader'
                         Why do we use it?
                     </div>
                     <div className="font-light">
-                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                     </div>
 
                     <br />
@@ -54,6 +60,5 @@ import { ButtonHeader } from '../components/ButtonHeader'
                 </div>
             </div>
         </div>
-      )
-    }
-    
+    )
+}
