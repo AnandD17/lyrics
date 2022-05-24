@@ -13,7 +13,7 @@ export const Privacy = (props) => {
 
             <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
+            <div className='overflow-auto h-[100%] bg-[#FBFBFB] sm:px-5 px-1 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Privacy'} />
                 </div>

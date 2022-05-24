@@ -16,7 +16,7 @@ export const ContactUs = (props) => {
     <div className='ContactUs h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
 
     <Helmet>
-        <title>ContactUs | Revaltronics</title>
+        <title>Contact Us | Revaltronics</title>
       </Helmet>
 
             <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
@@ -25,7 +25,7 @@ export const ContactUs = (props) => {
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={'Contact Us'} />
                 </div>
-                <div className='bg-white py-2 px-6 dark:bg-[#2C2C2C]'>
+                <div className='bg-white py-2 px-5 dark:bg-[#2C2C2C]'>
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><BsFillPersonFill className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>

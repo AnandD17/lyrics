@@ -63,23 +63,23 @@ export const Lyrics = (props) => {
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={info.title} />
                 </div>
-                <div className="grid gap-4 p-4 grid-cols-10 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
+                <div className="grid gap-4 p-5 grid-cols-10 dark:bg-[#2C2C2C] dark:text-[#FAF9F6] bg-white h-auto">
                     <div className="col-span-10 h-auto sm:col-span-2 pr-2">
                         <img src={info.poster ? info.poster : logo} alt="music" className='aspect-square w-full rounded-[5px]' />
-                        <div className='w-[75%] bg-[#F6F6F6] h-[3px] m-auto my-5 mt-7'></div>
-                        <div className='flex flex-col gap-2'>
-                            <div className='text-sm text-left pl-5'>
+                        <div className='w-[75%] bg-[#00C637] h-[3px] m-auto my-5 mt-7'></div>
+                        <div className='flex flex-col gap-2 w-full'>
+                            <div className='text-sm text-left'>
                                 <div>{info.title}</div>
                             </div>
-                            <div className='text-sm text-left pl-5'>
+                            <div className='text-sm text-left'>
                                 <div>Artist</div>
                                 <div className='opacity-75 font-light'>{info.artist}</div>
                             </div>
-                            <div className='text-sm text-left pl-5'>
+                            <div className='text-sm text-left '>
                                 <div>Album</div>
                                 <div className='opacity-75 font-light'>{info.album}</div>
                             </div>
-                            <div className='text-sm text-left pl-5'>
+                            <div className='text-sm text-left'>
                                 <div>Year</div>
                                 <div className='opacity-75 font-light'>{info.year}</div>
                             </div>
