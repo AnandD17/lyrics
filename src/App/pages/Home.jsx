@@ -12,6 +12,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import { Helmet } from 'react-helmet';
+// import './Home.scss';
 
 
 
@@ -64,21 +65,26 @@ export const Home = (props) => {
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
 
-      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] w-full dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
+      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
 
-        {/* <OwlCarousel 
-          className="owl-theme"  
-          loop={true}
-          autoplayTimeout={5000}
-          autoplay
-          center={true}
-          items = {2}
-          margin={8} > 
-          {slider.map((song,key) => {
-              return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}  className="item cursor-pointer cover"><h4><img src={song.poster===''?carousol:song.poster} alt="Image not found" className=' aspect-[4/2]  w-full' /></h4></div>)
-          })}
-      </OwlCarousel>   */}
+        {/* <div className='carosol max-w-full h-auto'>
 
+            <OwlCarousel 
+              className="owl-theme"  
+              loop={true}
+              autoplayTimeout={5000}
+              autoplay
+              center={true}
+              items = {2}
+              margin={8}
+              autoWidth
+              mergeFit > 
+              {slider.map((song,key) => {
+                return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}  className=" item cursor-pointer"><h4><img src={song.poster===''?carousol:song.poster} alt="Image not found" className=' aspect-square  w-full' /></h4></div>)
+              })}
+            </OwlCarousel>  
+
+          </div> */}
       {/* Carousol Items */}
       {/* {slider.map((song,key) => {
               return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}  className="item cursor-pointer cover"><h4><img src={song.poster===''?carousol:song.poster} alt="Image not found" className=' aspect-[4/2]  w-full' /></h4></div>)

@@ -5,7 +5,7 @@ import { MusicThumbnail } from '../components/MusicThumbnail'
 import { Pagination } from '../components/Pagination'
 import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
-import music from './../assets/music.jpg'
+import music from './../assets/lyrics.png'
 import LoadingBar from "react-top-loading-bar";
 import { useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet';

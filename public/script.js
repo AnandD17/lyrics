@@ -34,7 +34,7 @@ $(document).ready(function() {
         margin:10,
         responsive:{
             600:{
-                items:4
+                items:2
             }
         }
     });
