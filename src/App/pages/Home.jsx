@@ -8,10 +8,8 @@ import axios from 'axios'
 import music from './../assets/lyrics.png'
 import LoadingBar from "react-top-loading-bar";
 import { useNavigate } from 'react-router-dom'
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import { Helmet } from 'react-helmet';
+import { tns } from 'tiny-slider'
 // import './Home.scss';
 
 
@@ -40,14 +38,28 @@ export const Home = (props) => {
       setSongs(data.data.data.recent_songs);
       setAlbums(data.data.data.recent_albums);
       setSlider(data.data.data.sliders);
-      localStorage.setItem('slider', JSON.stringify(data.data.data.sliders))
+      tns({
+        container: '.slider',
+        items: 3,
+        loop: true,
+        center: true,
+        autoplay: true,
+        autoplayText: ['',''],
+        nav: true,
+        speed: 400,
+        mouseDrag: true,
+        arrowKeys: false,
+        gutter: 25,
+        controls: false,
+      });
+      // localStorage.setItem('slider', JSON.stringify(data.data.data.sliders))
     }
   }
   useEffect(() => {
     getData();
   }, []);
 
-
+  
 
 
   return (
@@ -64,31 +76,13 @@ export const Home = (props) => {
       <div>
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
-
+        
       <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
-
-        {/* <div className='carosol max-w-full h-auto'>
-
-            <OwlCarousel 
-              className="owl-theme"  
-              loop={true}
-              autoplayTimeout={5000}
-              autoplay
-              center={true}
-              items = {2}
-              margin={8}
-              autoWidth
-              mergeFit > 
-              {slider.map((song,key) => {
-                return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}  className=" item cursor-pointer"><h4><img src={song.poster===''?carousol:song.poster} alt="Image not found" className=' aspect-square  w-full' /></h4></div>)
-              })}
-            </OwlCarousel>  
-
-          </div> */}
-      {/* Carousol Items */}
-      {/* {slider.map((song,key) => {
-              return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}  className="item cursor-pointer cover"><h4><img src={song.poster===''?carousol:song.poster} alt="Image not found" className=' aspect-[4/2]  w-full' /></h4></div>)
-          })} */}
+      <div class="slider">
+          {slider.map((song,key) => {
+            return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
+          })}
+      </div>
 
         <div className="h-auto w-full ">
         <div className='flex justify-start my-4'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiFillHome,AiFillFire,AiFillClockCircle} from 'react-icons/ai'
 import {BsFillArrowUpCircleFill,BsSunFill,BsGlobe} from 'react-icons/bs'
 import {FiInfo} from 'react-icons/fi'
@@ -8,15 +8,35 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import logo from './../assets/logo.png'
 import cont from './../assets/contact.png'
 import lock from './../assets/lock.png'
+import tr1 from './../assets/tr.png'
+import tr2 from './../assets/trActive.png'
 
 export const Sidebar = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [tri,setTri] = useState();
 
     const handleDir = (dir)=>{
         props.toggleSideBar();
         navigate(dir)
     }
+
+    const set1 =()=>{
+        if(location.pathname==='/trending') return;
+        setTri(tr2)
+    }
+    
+    const erase1 =()=>{
+        if(location.pathname==='/trending') return;
+        setTri(tr1)
+
+    }
+
+    useEffect(()=>{
+        erase1();
+    },[location.pathname])
+
+
     return (
         <div className='Sidebar w-full lg:pt-[50px] flex flex-col justify-between h-[100vh] bg-white dark:bg-[#2C2C2C]'>
             <div>
@@ -44,8 +64,9 @@ export const Sidebar = (props) => {
                         </div>
                         <div className='sm:text-xl text-base flex items-center'>Recently Uploaded</div>
                     </div>
-                    <div onClick={()=>{handleDir('/trending')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
-                        <GoFlame className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/>
+                    <div onClick={()=>{handleDir('/trending')}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`} onMouseEnter={()=>{set1();}} onMouseLeave={()=>{erase1();}}>
+                        {/* <GoFlame className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/> */}
+                        <img src={location.pathname==='/trending'?tr2:tri} alt="trending" />
                         <div className='sm:text-xl text-base flex items-center '>Trending</div>
                     </div>
                 </div>
