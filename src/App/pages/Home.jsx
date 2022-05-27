@@ -39,7 +39,7 @@ export const Home = (props) => {
       setAlbums(data.data.data.recent_albums);
       setSlider(data.data.data.sliders);
       tns({
-        container: '.slider',
+        container: '.my-slider',
         items: 3,
         loop: true,
         center: true,
@@ -78,9 +78,9 @@ export const Home = (props) => {
       </div>
         
       <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
-      <div class="slider">
-          {slider.map((song,key) => {
-            return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
+      <div className="my-slider">
+          {slider.map((song,index) => {
+            return(<img key={index} src={song.poster===''?carousol:song.poster} onClick={()=>navigate(`/lyrics/${song.slug}`)} alt="Image not found" className='' />)
           })}
       </div>
 
