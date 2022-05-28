@@ -19,7 +19,7 @@ export const Home = (props) => {
   const navigate = useNavigate();
   const [songs, setSongs] = useState([])
   const [albums, setAlbums] = useState([])
-  const [slider, setSlider] = useState([])
+  const [slider, setSlider] = useState(null)
   const [progress, setProgress] = useState(0);
   const [opacity, setOpacity] = useState('');
   const [display, setDisplay] = useState(false);
@@ -29,7 +29,9 @@ export const Home = (props) => {
   const getData = async () => {
     setProgress(50)
     setOpacity('opacity-50');
+    
     const data = await axios.get(`${BASE_URL}/homepage`)
+    
     if (data) {
       setProgress(100)
       setOpacity('');
@@ -37,27 +39,32 @@ export const Home = (props) => {
       setDisplay(true)
       setSongs(data.data.data.recent_songs);
       setAlbums(data.data.data.recent_albums);
-      setSlider(data.data.data.sliders);
-      tns({
-        container: '.my-slider',
-        items: 3,
-        loop: true,
-        center: true,
-        autoplay: true,
-        autoplayText: ['',''],
-        nav: true,
-        speed: 400,
-        mouseDrag: true,
-        arrowKeys: false,
-        gutter: 25,
-        controls: false,
-      });
-      // localStorage.setItem('slider', JSON.stringify(data.data.data.sliders))
+     await setSlider(data.data.data.sliders);  
     }
+
   }
+    
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    tns({
+      container: '.my-slider',
+      items: 3,
+      loop: true,
+      center: true,
+      autoplay: true,
+      autoplayText: ['',''],
+      nav: true,
+      speed: 400,
+      mouseDrag: true,
+      arrowKeys: false,
+      gutter: 25,
+      controls: false,
+    });
+  
+  }, [slider])
 
   
 
@@ -78,10 +85,14 @@ export const Home = (props) => {
       </div>
         
       <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
+      
+        
       <div className="my-slider">
-          {slider.map((song,index) => {
-            return(<img key={index} src={song.poster===''?carousol:song.poster} onClick={()=>navigate(`/lyrics/${song.slug}`)} alt="Image not found" className='' />)
-          })}
+          {slider ? slider.map((song,index) => {
+            if(song.poster){
+              return(<img key={index} src={song.poster} onClick={()=>navigate(`/lyrics/${song.slug}`)} alt="Image not found" className='' />)
+            }
+          }) : null } 
       </div>
 
         <div className="h-auto w-full ">
