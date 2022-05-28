@@ -40,15 +40,30 @@ export const Home = (props) => {
       setSlider(data.data.data.sliders);
       tns({
         container: '.slider',
-        items: 3,
+        items: 2,
+        responsive: {
+          640: {
+            edgePadding: 20,
+            gutter: 20,
+            items: 2
+          },
+          700: {
+            gutter: 30
+          },
+          900: {
+            items: 3
+          }
+        },
         loop: true,
         center: true,
         autoplay: true,
         autoplayText: ['',''],
         nav: true,
+        navPosition: 'bottom',
+        navAsThumbnails: true,
         speed: 400,
-        mouseDrag: true,
-        arrowKeys: false,
+        // mouseDrag: true,
+        arrowKeys: true,
         gutter: 25,
         controls: false,
       });
@@ -77,7 +92,7 @@ export const Home = (props) => {
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
         
-      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
+      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
       <div class="slider">
           {slider.map((song,key) => {
             return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
