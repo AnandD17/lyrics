@@ -1,13 +1,14 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {FiMenu} from 'react-icons/fi'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {BiSearch} from 'react-icons/bi'
 import logo from './../assets/logo.png'
 
 
 export const SearchBar = (props) => {
     const navigate = useNavigate();
-    const [value,setValue] = useState('')
+    const location = useLocation();
+    const [value,setValue] = useState(!props.title?'':props.title);
     const serachInput = document.getElementById("serachInput");
 
 
@@ -16,6 +17,7 @@ export const SearchBar = (props) => {
         navigate(`/search/${value}`)
       }
     }
+
 
   return (
     <div className='SearchBar w-full px-6'>

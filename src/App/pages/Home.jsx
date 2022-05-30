@@ -19,7 +19,7 @@ export const Home = (props) => {
   const navigate = useNavigate();
   const [songs, setSongs] = useState([])
   const [albums, setAlbums] = useState([])
-  const [slider, setSlider] = useState(null)
+  const [slider, setSlider] = useState([])
   const [progress, setProgress] = useState(0);
   const [opacity, setOpacity] = useState('');
   const [display, setDisplay] = useState(false);
@@ -39,7 +39,37 @@ export const Home = (props) => {
       setDisplay(true)
       setSongs(data.data.data.recent_songs);
       setAlbums(data.data.data.recent_albums);
-     await setSlider(data.data.data.sliders);  
+      setSlider(data.data.data.sliders);
+      // tns({
+      //   container: '.slider',
+      //   items: 2,
+      //   responsive: {
+      //     640: {
+      //       edgePadding: 20,
+      //       gutter: 20,
+      //       items: 2
+      //     },
+      //     700: {
+      //       gutter: 30
+      //     },
+      //     900: {
+      //       items: 3
+      //     }
+      //   },
+      //   loop: true,
+      //   center: true,
+      //   autoplay: true,
+      //   autoplayText: ['',''],
+      //   nav: true,
+      //   navPosition: 'bottom',
+      //   navAsThumbnails: true,
+      //   speed: 400,
+      //   // mouseDrag: true,
+      //   arrowKeys: true,
+      //   gutter: 25,
+      //   controls: false,
+      // });
+      // localStorage.setItem('slider', JSON.stringify(data.data.data.sliders))
     }
 
   }
@@ -49,20 +79,35 @@ export const Home = (props) => {
   }, []);
 
   useEffect(() => {
-    // tns({
-    //   container: '.my-slider',
-    //   items: 3,
-    //   loop: true,
-    //   center: true,
-    //   autoplay: true,
-    //   autoplayText: ['',''],
-    //   nav: true,
-    //   speed: 400,
-    //   mouseDrag: true,
-    //   arrowKeys: false,
-    //   gutter: 25,
-    //   controls: false,
-    // });
+    tns({
+      container: '.slider',
+      items: 2,
+      responsive: {
+        640: {
+          edgePadding: 20,
+          gutter: 20,
+          items: 2
+        },
+        700: {
+          gutter: 30
+        },
+        900: {
+          items: 3
+        }
+      },
+      loop: true,
+      center: true,
+      autoplay: true,
+      autoplayText: ['',''],
+      nav: true,
+      navPosition: 'bottom',
+      navAsThumbnails: true,
+      speed: 400,
+      // mouseDrag: true,
+      arrowKeys: true,
+      gutter: 25,
+      controls: false,
+    });
   
   }, [slider])
 
@@ -80,20 +125,16 @@ export const Home = (props) => {
         color="#00C637"
       />
 
-      <div>
+      <div className='lg:h-[10%] h-[30%]'>
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
         
-      <div className={`overflow-y-auto overflow-x-hidden h-[100%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 pt-5 lg:pb-[70px] pb-[250px] ${display===false?'hidden':''}`}>
-      
-        
-      {/* <div className="my-slider">
-          {slider ? slider.map((song,index) => {
-            if(song.poster){
-              return(<img key={index} src={song.poster} onClick={()=>navigate(`/lyrics/${song.slug}`)} alt="Image not found" className='' />)
-            }
-          }) : null } 
-      </div> */}
+      <div className={`overflow-y-auto overflow-x-hidden lg:h-[90%] h-[70%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 ${display===false?'hidden':''}`}>
+      <div class="slider">
+          {slider.map((song,key) => {
+            return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
+          })}
+      </div>
 
         <div className="h-auto w-full ">
         <div className='flex justify-start my-4'>

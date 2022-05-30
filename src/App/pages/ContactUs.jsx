@@ -31,7 +31,7 @@ export const ContactUs = (props) => {
             return;
         }
         setCValue('Sending Message....')
-        setOpacity('opacity-[70]');
+        setOpacity('opacity-40');
         setName('');
         setEmail('');
         setMessage('');
@@ -56,9 +56,12 @@ export const ContactUs = (props) => {
         <title>Contact Us | Revaltronics</title>
       </Helmet>
 
-            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
+            <div className='lg:h-[10%] h-[30%]'>
 
-            <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C] ${opacity}`}>
+            <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
+            </div>
+
+            <div className={`overflow-auto lg:h-[90%] h-[70%] bg-[#FBFBFB] px-6 pt-5 pb-5 dark:bg-[#2C2C2C] ${opacity}`}>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={cValue} />
                 </div>
@@ -66,17 +69,17 @@ export const ContactUs = (props) => {
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><BsFillPersonFill className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
-                        <input type="text" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='Name' onChange={(e)=>{setName(e.target.value)}} value={name} />
+                        <input type="text" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='*Name' onChange={(e)=>{setName(e.target.value)}} value={name} />
                     </div>
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><MdEmail className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
-                        <input type="email" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} value={email} />
+                        <input type="email" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='*Email' onChange={(e)=>{setEmail(e.target.value)}} value={email} />
                     </div>
 
                     <div className='rounded-[5px] flex h-full gap-[10px] py-3 px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center'><AiFillMessage className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
-                        <textarea name="" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='Message' onChange={(e)=>{setMessage(e.target.value)}} value={message} id="" cols="80" rows="10"></textarea>
+                        <textarea name="" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='*Message' onChange={(e)=>{setMessage(e.target.value)}} value={message} id="" cols="80" rows="10"></textarea>
                     </div>
 
                     <div className='flex justify-end mb-3'>
