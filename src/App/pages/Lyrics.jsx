@@ -59,7 +59,7 @@ export const Lyrics = (props) => {
 
             <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
 
-            <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C] lg:pb-[10px] pb-[180px] ${display}`}>
+            <div className={` h-[100%] bg-[#FBFBFB] px-6 pt-5 dark:bg-[#2C2C2C] lg:pb-[10px] pb-[180px] ${display}`}>
                 <div className='flex justify-start my-4 mb-10'>
                     <ButtonHeader title={info.title} />
                 </div>
@@ -89,7 +89,7 @@ export const Lyrics = (props) => {
 
                         </div>
                     </div>
-                    <div className="col-span-10 sm:col-span-8 text-center">
+                    <div className="col-span-10 h-full overflow-auto sm:col-span-8 text-center">
                         <div className='flex flex-wrap gap-4'>
                             <div onClick={() => { setTabs('crt') }}>
                                 {info.lyrics_crt_file && <ButtonHeader title={'CRT File'} />}
@@ -102,7 +102,7 @@ export const Lyrics = (props) => {
 
                         </div>
 
-                        {tabs === 'crt' && <div className='whitespace-pre-line text-left pb-[100px]'>
+                        {tabs === 'crt' && <div className='overflow-auto whitespace-pre-line text-left pb-[100px]'>
                             <div className=''>
                                 {info.lyrics_crt_file}
 

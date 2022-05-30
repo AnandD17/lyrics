@@ -5,12 +5,49 @@ import {BsFillPersonFill} from 'react-icons/bs'
 import {MdEmail} from 'react-icons/md'
 import {AiFillMessage} from 'react-icons/ai'
 import { Helmet } from 'react-helmet';
+import axios from 'axios'
+import { BASE_URL } from '../utils/apiConstant'
+import cogoToast from 'cogo-toast'
 
 
 export const ContactUs = (props) => {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [message,setMessage] = useState('')
+    const [opacity,setOpacity] = useState('')
+    const [cValue,setCValue] = useState('Contact Us')
+
+    const sendReq = async() =>{
+        if(!name){
+            cogoToast.error('Name is Required');
+            return;
+        }
+        if(!email){
+            cogoToast.error('Email is Required');
+            return;
+        }
+        if(!message){
+            cogoToast.error('Message is Required');
+            return;
+        }
+        setCValue('Sending Message....')
+        setOpacity('opacity-[70]');
+        setName('');
+        setEmail('');
+        setMessage('');
+        await axios.post(`${BASE_URL}/user_query`,{name,email,message})
+        .then(res=>{
+            console.log(res);
+            cogoToast.success(res.data.message)
+            setCValue('Contact Us')
+            setOpacity('');
+        })
+        .catch(err=>{
+            cogoToast.error(err.data.message)
+            setCValue('Contact Us')
+            setOpacity('');
+        })
+    }
 
   return (
     <div className='ContactUs h-full w-full overflow-hidden dark:bg-[#2C2C2C]'>
@@ -21,9 +58,9 @@ export const ContactUs = (props) => {
 
             <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
 
-            <div className='overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C]'>
+            <div className={`overflow-auto h-[100%] bg-[#FBFBFB] px-6 pt-5 lg:pb-[120px] pb-[250px] dark:bg-[#2C2C2C] ${opacity}`}>
                 <div className='flex justify-start my-4 mb-10'>
-                    <ButtonHeader title={'Contact Us'} />
+                    <ButtonHeader title={cValue} />
                 </div>
                 <div className='bg-white py-2 px-5 dark:bg-[#2C2C2C]'>
 
@@ -34,7 +71,7 @@ export const ContactUs = (props) => {
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><MdEmail className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
-                        <input type="text" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} value={email} />
+                        <input type="email" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} value={email} />
                     </div>
 
                     <div className='rounded-[5px] flex h-full gap-[10px] py-3 px-2 bg-[#F5F5F5] my-5'>
@@ -43,7 +80,7 @@ export const ContactUs = (props) => {
                     </div>
 
                     <div className='flex justify-end mb-3'>
-                        <button type="submit" className='bg-[#00C637] text-white py-2 w-[450px] rounded-[5px]'>Send</button>
+                        <button onClick={()=>{sendReq()}} type="submit" className='bg-[#00C637] text-white py-2 w-[450px] rounded-[5px]'>Send</button>
                     </div>
 
                 </div>

@@ -58,7 +58,7 @@ export const Trending = (props) => {
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Trending'}/>
         </div>
-        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
+        <div className="grid gap-3 gap-y-[20px] grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
         {songs.map((song) => (
             <div className="col-span-1" key={song.id}>
               <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>

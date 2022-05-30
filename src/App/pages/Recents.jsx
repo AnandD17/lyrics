@@ -6,7 +6,7 @@ import { BASE_URL } from '../utils/apiConstant'
 import { SearchBar } from '../components/SearchBar'
 import { Pagination } from '../components/Pagination'
 import music from './../assets/lyrics.png'
-import PaginationItem from '@mui/material/PaginationItem';
+// import PaginationItem from '@mui/material/PaginationItem';
 import LoadingBar from "react-top-loading-bar";
 // import { Pagination } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -68,7 +68,7 @@ export const Recents = (props) => {
           <ButtonHeader title={'Recently Added'} />
         </div>
 
-        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
+        <div className="grid gap-3 gap-y-[20px] grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
           {songs.map((song) => (
             <div className="col-span-1" key={song.id}>
               <MusicThumbnail name={song.title} artist={song.artist} img={song.poster ? song.poster : music} slug={song.slug} {...props} />
@@ -76,7 +76,7 @@ export const Recents = (props) => {
           ))}
         </div>
         <div className={`mt-5 flex justify-center dark:text-[#FAF9F6] text-black ${display === false ? 'hidden' : ''}`}>
-          {/* <Pagination count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}/> */}
+          {/* <Pagination count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} size={'small'} onChange={handleChange}/> */}
           <Pagination changePage={(page) => { setPage(page) }} page={page} />
           {/* <Pagination
         count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} onChange={handleChange}
