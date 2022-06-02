@@ -43,7 +43,7 @@ export const ContactUs = (props) => {
         setMessage('');
         await axios.post(`${BASE_URL}/user_query`,{name,email,message})
         .then(res=>{
-            console.log(res);
+            // console.log(res);
             if(res.data.result==='failed'){
                 cogoToast.error(res.data.message)
             }

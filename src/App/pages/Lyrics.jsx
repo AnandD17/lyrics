@@ -25,13 +25,13 @@ export const Lyrics = (props) => {
     const getData = async () => {
         setOpacity('opacity-50')
         setDisplay('hidden')
-        console.log('location is');
-        console.log(location);
+        // console.log('location is');
+        // console.log(location);
         setProgress(50)
         const data = await axios.get(`${BASE_URL}${location.pathname}`);
         if (data) {
             setProgress(100)
-            console.log(data);
+            // console.log(data);
             setOpacity('')
             setDisplay('')
             setInfo(data.data.data[0]);

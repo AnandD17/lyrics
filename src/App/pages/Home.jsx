@@ -35,7 +35,7 @@ export const Home = (props) => {
     if (data) {
       setProgress(100)
       setOpacity('');
-      console.log(data);
+      // console.log(data);
       setDisplay(true)
       setSongs(data.data.data.recent_songs);
       setAlbums(data.data.data.recent_albums);

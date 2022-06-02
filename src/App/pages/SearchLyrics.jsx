@@ -15,26 +15,28 @@ export const SearchLyrics = (props) => {
   const [songs, setSongs] = useState([])
   const [progress, setProgress] = useState(0);
   const [display, setDisplay] = useState('')
+  const [page, setPage] = useState(1);
   const [opacity, setOpacity] = useState('');
   const location = useLocation();
+  const [totalPage,setTotalPage] = useState();
 
   const getData = async () => {
     console.log(location);
     setDisplay('hidden')
     setProgress(75)
     setOpacity('opacity-50')
-    const data = await axios.get(`${BASE_URL}${location.pathname}`)
+    const data = await axios.get(`${BASE_URL}${location.pathname}?page=${page}`)
     if (data) {
       setOpacity('')
       setProgress(100)
       setSongs(data.data.data);
+      setTotalPage(Math.ceil(data.data.additional.total/50))
       setDisplay('')
     }
-    console.log(data);
   }
   useEffect(() => {
     getData();
-  }, [location.pathname]);
+  }, [location.pathname,page]);
 
   return (
     <div className={`Recents h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
@@ -73,6 +75,7 @@ export const SearchLyrics = (props) => {
         {songs.length != 0 ?
           <div className={`mt-5 flex justify-center h-auto dark:text-light text-black ${display}`}>
             {/* <Pagination /> */}
+            <Pagination changePage={(page) => { setPage(page) }} page={page} totalPage={totalPage}/>
           </div> : null}
 
       </div>

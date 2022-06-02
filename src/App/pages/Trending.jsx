@@ -31,9 +31,9 @@ export const Trending = (props) => {
       setProgress(100)
       setSongs(data.data.data);
       setDisplay(true)
-      console.log(data);
+      // console.log(data);
     }
-    console.log(data);
+    // console.log(data);
   }
   useEffect(()=> {
     getData();

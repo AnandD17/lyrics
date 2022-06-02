@@ -14,30 +14,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet';
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-
-export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowDimensions;
-}
 
 
 export const Recents = (props) => {
@@ -48,7 +24,6 @@ export const Recents = (props) => {
   const [opacity, setOpacity] = useState('');
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
-  const { height, width } = useWindowDimensions();
 
   console.log(page);
 
@@ -67,9 +42,10 @@ export const Recents = (props) => {
       setOpacity('')
       setProgress(100)
       setSongs(data.data.data);
-      setTotalPage(parseInt(data.data.additional.total))
-      console.log('total pages');
-      console.log(totalPage);
+      setTotalPage(Math.floor(data.data.additional.total/50))
+      // setTotalPage(parseInt(data.data.additional.total/50).floor)
+      // console.log('total pages');
+      // console.log(totalPage);
       setDisplay(true)
     }
     console.log(data);
@@ -109,7 +85,7 @@ export const Recents = (props) => {
         </div>
         <div className={`mt-5 flex justify-center h-auto dark:text-light text-black ${display === false ? 'hidden' : ''}`}>
           {/* <Pagination count={10} color="success" variant="outlined" page={page} classes={{color:'inherit'}} size={'small'} onChange={handleChange}/> */}
-          <Pagination changePage={(page) => { setPage(page) }} page={page} totalPage={100}/>
+          <Pagination changePage={(page) => { setPage(page) }} page={page} totalPage={totalPage}/>
           {/* <Pagination totalPosts={perPage} postsPerPage={50} page={page} /> */}
           {/* <Pagination
              color="success" variant="outlined" page={page} count={perPage} classes={{color:'inherit',width:'inherit'}} onChange={handleChange} size={width<800?'small':''}
