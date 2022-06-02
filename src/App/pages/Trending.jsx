@@ -52,13 +52,13 @@ export const Trending = (props) => {
     />
 
     
-      <div className='lg:h-[10%] h-[30%]'>
+      <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>
 
       <SearchBar toggleSideBar={()=>{props.toggleSideBar()}}/>
       </div>
 
       
-      <div className={`overflow-auto lg:h-[90%] h-[70%] bg-[#FBFBFB] px-6 pt-5 pb-5 dark:bg-[#2C2C2C] ${display===false?'hidden':''}`}>
+      <div className={`overflow-auto lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] px-6 pt-5 pb-5 dark:bg-[#2C2C2C] ${display===false?'hidden':''}`}>
         <div className='flex justify-start mb-4'>
           <ButtonHeader title={'Trending'}/>
         </div>

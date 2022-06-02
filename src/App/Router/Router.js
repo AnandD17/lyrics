@@ -64,7 +64,7 @@ export  const RouterMain = () => {
     <div className='min-h-full bg-white dark:bg-[#2C2C2C]'>
         <Router>
             <div className='flex h-[100vh] w-[100vw] max-w-[1800px] m-auto bg-white dark:bg-[#2C2C2C]'>
-                <div className={`transition-all lg:w-[330px] lg:min-w-[330px] lg:z-auto z-20 min-w-[240px] w-[240px] lg:block lg:static absolute h-full lg:transform-none sm:opacity-100 ${sidebarClass==='hidden'?'-translate-x-full opacity-0':'opacity-100'}`}>
+                <div className={`transition-all lg:max-w-[400px] lg:w-[330px] lg:min-w-[330px] lg:z-auto z-20 min-w-[240px] w-[240px] lg:block lg:static absolute h-full lg:transform-none sm:opacity-100 ${sidebarClass==='hidden'?'-translate-x-full opacity-0':'opacity-100'}`}>
                     <Sidebar mode={mode} changeMode={(mode)=>{return(setMode(mode),swapMode(mode))}} toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>
                 </div>
                 <div className='flex w-full  justify-center'>

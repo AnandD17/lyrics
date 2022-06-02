@@ -12,59 +12,69 @@ import { Helmet } from 'react-helmet';
 
 
 export const SearchLyrics = (props) => {
-    const [songs,setSongs] = useState([])
-  const [progress,setProgress] = useState(0);
-  const [display,setDisplay] = useState('')
-  const [opacity,setOpacity] = useState('');
+  const [songs, setSongs] = useState([])
+  const [progress, setProgress] = useState(0);
+  const [display, setDisplay] = useState('')
+  const [opacity, setOpacity] = useState('');
   const location = useLocation();
 
-  const  getData = async()=>{
-      console.log(location);
-    setDisplay(false)
+  const getData = async () => {
+    console.log(location);
+    setDisplay('hidden')
     setProgress(75)
     setOpacity('opacity-50')
-    const data =  await axios.get(`${BASE_URL}${location.pathname}`)
-    if(data) {
+    const data = await axios.get(`${BASE_URL}${location.pathname}`)
+    if (data) {
       setOpacity('')
       setProgress(100)
       setSongs(data.data.data);
-      setDisplay(true)
+      setDisplay('')
     }
     console.log(data);
   }
-  useEffect(()=> {
+  useEffect(() => {
     getData();
-  },[location.pathname]);
+  }, [location.pathname]);
 
   return (
     <div className={`Recents h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
-      
+
 
       <Helmet>
-        <title>{`${location.pathname.slice(8).replace(/%20/g,' ')} | Revaltronics`}</title>
+        <title>{`${location.pathname.slice(8).replace(/%20/g, ' ')} | Revaltronics`}</title>
       </Helmet>
       <LoadingBar
-    progress={progress}
-    height={3}
-    color="#00C637"
-    />
+        progress={progress}
+        height={3}
+        color="#00C637"
+      />
 
 
-    
-      <div className='lg:h-[10%] h-[30%]'>
 
-      <SearchBar toggleSideBar={()=>{props.toggleSideBar()}} title={location.pathname.slice(8).replace(/%20/g,' ')}/>
+      <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>
+
+        <SearchBar toggleSideBar={() => { props.toggleSideBar() }} title={location.pathname.slice(8).replace(/%20/g, ' ')} />
       </div>
 
-      <div className='overflow-auto lg:h-[90%] h-[70%] bg-[#FBFBFB] px-6 pt-5 pb-5 dark:bg-[#2C2C2C]'>
-        
-        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
-        {songs.length!=0?songs.map((song) => (
-            <div className="col-span-1" key={song.id}>
-              <MusicThumbnail name={song.title} artist={song.artist} img={song.poster?song.poster:music} slug={song.slug} {...props}/>
-            </div>
-          )):<ButtonHeader title='No results found'/>}
-        </div>
+      <div className={`overflow-auto lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] px-6 pt-5 pb-5 dark:bg-[#2C2C2C] ${display}`}>
+        {songs.length != 0 ?
+          <div className="grid gap-3 grid-cols-2 gap-y-[20px] lg:grid-cols-5 sm:grid-cols-3 grid-cols-2">
+            {songs.map((song) => (
+              <div className="col-span-1" key={song.id}>
+                <MusicThumbnail name={song.title} artist={song.artist} img={song.poster ? song.poster : music} slug={song.slug} {...props} />
+              </div>
+            ))}
+          </div> :
+          <div className="flex justify-start">
+            <ButtonHeader title='No results found' />
+          </div>
+        }
+
+        {songs.length != 0 ?
+          <div className={`mt-5 flex justify-center h-auto dark:text-light text-black ${display}`}>
+            {/* <Pagination /> */}
+          </div> : null}
+
       </div>
     </div>
   )

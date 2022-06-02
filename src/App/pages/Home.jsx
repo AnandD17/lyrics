@@ -45,7 +45,6 @@ export const Home = (props) => {
       //   items: 2,
       //   responsive: {
       //     640: {
-      //       edgePadding: 20,
       //       gutter: 20,
       //       items: 2
       //     },
@@ -84,7 +83,6 @@ export const Home = (props) => {
       items: 2,
       responsive: {
         640: {
-          edgePadding: 20,
           gutter: 20,
           items: 2
         },
@@ -125,11 +123,11 @@ export const Home = (props) => {
         color="#00C637"
       />
 
-      <div className='lg:h-[10%] h-[30%]'>
+      <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>
         <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
       </div>
         
-      <div className={`overflow-y-auto overflow-x-hidden lg:h-[90%] h-[70%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 ${display===false?'hidden':''}`}>
+      <div className={`overflow-y-auto overflow-x-hidden lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 ${display===false?'hidden':''}`}>
       <div class="slider">
           {slider.map((song,key) => {
             return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
@@ -137,13 +135,13 @@ export const Home = (props) => {
       </div>
 
         <div className="h-auto w-full ">
-        <div className='flex justify-start my-4'>
+          <div className='flex justify-start my-4 w-full'>
             <ButtonHeader title={'Recently added'} />
           </div>
           <div className='h-auto w-full  overflow-auto'>
-            <div className="grid gap-3 gap-y-[20px] grid-cols-2 sm:grid-cols-5 sm:w-full relative overflow-auto mb-5 py-3">
+            <div className="grid gap-3 gap-y-[20px] grid-cols-2 sm:grid-cols-5 sm:w-full overflow-auto mb-5 py-3">
               {songs.map((song) => (
-                <div className="col-span-1 w-full" key={songs.id}>
+                <div className="col-span-1" key={songs.id}>
                   <MusicThumbnail name={song.title} artist={song.artist} img={song.poster ? song.poster : music} slug={song.slug} {...props} />
                 </div>
               ))}

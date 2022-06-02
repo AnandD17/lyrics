@@ -12,13 +12,13 @@ export const Disclaimer = (props) => {
                 <title>Disclaimer | Revaltronics</title>
             </Helmet>
 
-            <div className='lg:h-[10%] h-[30%]'>
+            <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>
 
             <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
             </div>
 
-            <div className='overflow-auto lg:h-[90%] h-[70%] bg-[#FBFBFB] px-5 pt-5 pb-5 dark:bg-[#2C2C2C]'>
-                <div className='flex justify-start my-4 mb-10'>
+            <div className='overflow-auto lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] px-6  pb-5 dark:bg-[#2C2C2C]'>
+                <div className='flex justify-start my-5 '>
                     <ButtonHeader title={'Disclaimer'} />
                 </div>
                 <div className='text-justify dark:text-[#FAF9F6]  dark:bg-[#2C2C2C] bg-[#FFFFFF] p-4 rounded-[5px]'>
