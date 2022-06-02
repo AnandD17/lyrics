@@ -14,7 +14,7 @@ export const Disclaimer = (props) => {
 
             <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>
 
-            <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
+                <SearchBar toggleSideBar={() => { props.toggleSideBar() }} />
             </div>
 
             <div className='overflow-auto lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] px-6  pb-5 dark:bg-[#2C2C2C]'>
@@ -22,43 +22,67 @@ export const Disclaimer = (props) => {
                     <ButtonHeader title={'Disclaimer'} />
                 </div>
                 <div className='text-justify dark:text-[#FAF9F6]  dark:bg-[#2C2C2C] bg-[#FFFFFF] p-4 rounded-[5px]'>
-                    <div className='font-normal'>
-                        What is Lorem Ipsum?
+                    <div className='font-bold'>
+                        WEBSITE DISCLAIMER
                     </div>
-                    <div className='font-light'>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <br />
+                    <div className=''>
+                        The information provided by <b className='font-bold'> RevAltronics. </b> (“Company”, “we”, “our”, “us”) on <b className='font-bold'> revaltronics.com </b> (the “Site”) is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.
+                        <br /><br />
+                        UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.
                     </div>
-
                     <br />
 
-                    <div className="font-normal">
-                        Why do we use it?
+                    <div className='font-bold'>
+                        EXTERNAL LINKS DISCLAIMER
                     </div>
-                    <div className="font-light">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    <br />
+                    <div className=''>
+                        The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability or completeness by us.
+                        <br /><br />
+                        WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF ANY INFORMATION OFFERED BY THIRD-PARTY WEBSITES LINKED THROUGH THE SITE OR ANY WEBSITE OR FEATURE LINKED IN ANY BANNER OR OTHER ADVERTISING. WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES.
                     </div>
-
                     <br />
 
-                    <div className="font-normal">
-                        Where does it come from?
+                    <div className='font-bold'>
+                        AFFILIATES DISCLAIMER
                     </div>
-                    <div className="font-light">
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                        <br />
-                        <br />
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-
+                    <br />
+                    <div className=''>
+                        The Site may contain links to affiliate websites, and we may receive an affiliate commission for any purchases or actions made by you on the affiliate websites using such links.
                     </div>
-
                     <br />
 
-                    <div className="font-normal">
-                        Where can I get some?
+                    <div className='font-bold'>
+                        ERRORS AND OMISSIONS DISCLAIMER
                     </div>
-                    <div className="font-light">
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                    <br />
+                    <div className=''>
+                        While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, RevAltronics is not responsible for any errors or omissions or for the results obtained from the use of this information. All information in this site is provided “as is”, with no guarantee of completeness, accuracy, timeliness or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.
+                        <br /><br />
+                        In no event will RevAltronics, its related partnerships or corporations, or the partners, agents or employees thereof be liable to you or anyone else for any decision made or action taken in reliance on the information in this Site or for any consequential, special or similar damages, even if advised of the possibility of such damages.
                     </div>
+                    <br />
+
+
+                    <div className='font-bold'>
+                        LOGOS AND TRADEMARKS DISCLAIMER
+                    </div>
+                    <br />
+                    <div className=''>
+                        All logos and trademarks of third parties referenced on revaltronics.com are the trademarks and logos of their respective owners. Any inclusion of such trademarks or logos does not imply or constitute any approval, endorsement or sponsorship of RevAltronics by such owners.
+                    </div>
+                    <br />
+
+
+                    <div className='font-bold'>
+                        CONTACT US
+                    </div>
+                    <br />
+                    <div className=''>
+                    Should you have any feedback, comments, requests for technical support or other inquiries, please contact us by email: <b className='font-bold'>hello@revaltronics.com. </b>
+                    </div>
+                    <br />
 
                 </div>
             </div>
