@@ -1,0 +1,13 @@
+$width1: calc(100vw - 330px);
+$width2: calc(100vw - 240px);
+
+.Home{
+    @media only screen and (min-width:1024px) {
+        .carosol{
+            max-width: $width1;
+        }   
+    }
+    .carosol{
+        max-width: $width2;
+    }   
+}
