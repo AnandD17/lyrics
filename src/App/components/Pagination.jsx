@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import {BsArrowLeftShort,BsArrowRightShort} from 'react-icons/bs'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const Pagination = (props) => {
-  const navigate = useNavigate()
   const location = useLocation();
   const [gap,setGap]  =   useState('')
 

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {FiMenu} from 'react-icons/fi'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {BiSearch} from 'react-icons/bi'
 import logo from './../assets/logo.png'
 
@@ -23,9 +23,9 @@ export const SearchBar = (props) => {
     <div className='SearchBar w-full px-6'>
         <div className='text-[#00C637] flex justify-between items-center lg:hidden py-5'>
           <FiMenu className={'h-[25px] w-[25px] relative left-0'} onClick={()=>{props.toggleSideBar()}}/>
-          <div className='flex justify-content-center relative w-[100vw]'>
-            <img src={logo} alt="" className='h-auto w-[200px] m-auto' onClick={()=>{navigate(`/`)}}/>
-          </div>
+          <NavLink to="/" className='flex justify-content-center relative w-[100vw]'>
+            <img src={logo} alt="" className='h-auto w-[200px] m-auto' />
+          </NavLink>
         </div>
         <div className=' flex h-[40px] sm:h-[50px] gap-[10px] px-6 bg-[#F5F5F5] w-full m-auto sm:my-5 rounded-[5px] items-center'>
             <BiSearch className='ml-2 text-[#C3C3C3] h-[25px] w-[25px]'/>

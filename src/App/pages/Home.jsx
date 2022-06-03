@@ -7,7 +7,7 @@ import { BASE_URL } from '../utils/apiConstant'
 import axios from 'axios'
 import music from './../assets/lyrics.png'
 import LoadingBar from "react-top-loading-bar";
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet';
 import { tns } from 'tiny-slider'
 // import './Home.scss';
@@ -15,8 +15,6 @@ import { tns } from 'tiny-slider'
 
 
 export const Home = (props) => {
-
-  const navigate = useNavigate();
   const [songs, setSongs] = useState([])
   const [albums, setAlbums] = useState([])
   const [slider, setSlider] = useState([])
@@ -130,7 +128,7 @@ export const Home = (props) => {
       <div className={`overflow-y-auto overflow-x-hidden lg:h-[90%] sm:h-[70%] h-[77%] bg-[#FBFBFB] dark:bg-[#2C2C2C] px-6 ${display===false?'hidden':''}`}>
       <div class="slider">
           {slider.map((song,key) => {
-            return(<div key={song.slug} onClick={()=>navigate(`/lyrics/${song.slug}`)}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></div>)
+            return(<NavLink to={`/lyrics/${song.slug}`} key={song.slug}><img src={song.poster===''?carousol:song.poster} alt="Image not found" className='' /></NavLink>)
           })}
       </div>
 

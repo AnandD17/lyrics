@@ -78,7 +78,7 @@ export  const RouterMain = () => {
                         <Route exact path="/recents" element={ <Recents toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>  
                         <Route exact path="/privacy" element={<Privacy toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
                         <Route exact path="/disclaimer" element={<Disclaimer toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
-                        <Route exact path="/contactus" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
+                        <Route exact path="/contact" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
                         <Route exact path="/trending" element={<Trending toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
                         <Route exact path={`/`} element={<Home toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
                     </Routes>
