@@ -87,7 +87,7 @@ export const Lyrics = (props) => {
                                 <div className='opacity-75 font-light'>{info.year}</div>
                             </div>
                             {info.lyrics_crt_file && tabs === 'crt' &&
-                                <a href={`${BASE_URL}/download${location.pathname.slice(7)}`} className='bg-[#00C637] px-4 text-white py-2 mx-0 rounded-[5px]'>Download Lyrics</a>
+                                <a href={`${BASE_URL}/download${location.pathname.slice(7)}`} className='bg-[#00C637] px-1 text-white py-2 mx-0 rounded-[5px]'>Download Lyrics</a>
                             }
 
                         </div>
