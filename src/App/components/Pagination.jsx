@@ -65,9 +65,8 @@ export const Pagination = (props) => {
       showPages.push(1);
       showPages.push(2);
       showPages.push('..');
-      showPages.push(props.page-2);
-      showPages.push(props.page-3);
-      showPages.push(props.page-1);
+      showPages.push(props.totalPage-2);
+      showPages.push(props.totalPage-1);
       showPages.push(props.totalPage);
     }
     
@@ -76,8 +75,8 @@ export const Pagination = (props) => {
       showPages.push(1);
       showPages.push(2);
       showPages.push('..');
-      showPages.push(props.page-2);
-      showPages.push(props.page-1);
+      showPages.push(props.totalPage-2);
+      showPages.push(props.totalPage-1);
       showPages.push(props.totalPage);
     }
 
@@ -98,7 +97,7 @@ export const Pagination = (props) => {
             <div  onClick={()=>{props.changePage(props.page===1?1:props.page-1)}} className="cursor-pointer rounded-full font-bold flex items-center justify-center text-white bg-[#00C637] sm:text-4xl w-[25px] h-[25px]  sm:w-[30px] sm:h-[30px]"><BsArrowLeftShort/></div>
 
             {showPages.map((number,index)=>{return(
-              <div   onClick={()=>{props.changePage(number)}} className={`cursor-pointer rounded-full flex items-center justify-center w-[25px] h-[25px]  sm:w-[30px] sm:h-[30px] ${props.page===number?'text-white sm:text-base text-sm bg-[#00C637]':''}`}>{number}</div>
+              <div   onClick={()=>{number=='..'?props.changePage(props.page):props.changePage(number)}} className={`cursor-pointer rounded-full flex items-center justify-center w-[25px] h-[25px]  sm:w-[30px] sm:h-[30px] ${props.page===number?'text-white sm:text-base text-sm bg-[#00C637]':''}`}>{number}</div>
             )})}
             {/* <div   onClick={()=>{props.changePage(2)}} className={`cursor-pointer rounded-full flex items-center justify-center w-[30px] h-[30px] ${props.page===2?'text-white bg-[#00C637]':''}`}>2</div>
             <div   onClick={()=>{props.changePage(3)}} className={`cursor-pointer rounded-full flex items-center justify-center w-[30px] h-[30px] ${props.page===3?'text-white bg-[#00C637]':''}`}>3</div>
