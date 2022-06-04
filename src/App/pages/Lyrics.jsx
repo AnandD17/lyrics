@@ -128,7 +128,7 @@ export const Lyrics = (props) => {
                 <div className="w-full">
                 {additional.by_author.length!==0 && additional.by_author?<>
                     <div className='flex justify-start my-4'>
-                        <ButtonHeader title={'Same Artist'} />
+                        <ButtonHeader title={'More From '+ info.artist} />
                     </div>
                     <div className='h-auto w-full  overflow-auto'>
                         <div className="grid gap-3  gap-y-[20px] grid-cols-2 sm:grid-cols-5 sm:w-full relative overflow-auto mb-5 py-3">
@@ -142,7 +142,7 @@ export const Lyrics = (props) => {
                     </>:null}
                     {additional.by_album.length!==0 && additional.by_album?<>
                     <div className='flex justify-start my-4'>
-                        <ButtonHeader title={'Same Albums'} />
+                        <ButtonHeader title={'More Lyrics From ' + info.album} />
                     </div>
                     <div className='h-auto w-full  overflow-auto'>
                         <div className="grid gap-3  gap-y-[20px] grid-cols-2 sm:grid-cols-5 sm:w-full relative overflow-auto mb-5 py-3">
@@ -155,7 +155,7 @@ export const Lyrics = (props) => {
                     </div></>:null}
                     {additional.by_random.length!==0 && additional.by_random?<>
                     <div className='flex justify-start my-4'>
-                        <ButtonHeader title={'Related'} />
+                        <ButtonHeader title={'You may also like'} />
                     </div>
                     <div className='h-auto w-full  overflow-auto'>
                         <div className="grid gap-3  gap-y-[20px] grid-cols-2 sm:grid-cols-5 sm:w-full relative overflow-auto mb-5 py-3">
