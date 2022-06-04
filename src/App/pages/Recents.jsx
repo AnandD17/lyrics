@@ -59,6 +59,9 @@ export const Recents = (props) => {
 
       <Helmet>
         <title> Recents | Revaltronics</title>
+        <meta property="og:title" content="Recents Uploaded Lyrics | Revaltronics" />
+        <meta property="og:description" content="Download latest lyrics in CRT format or you can view them online." />
+        <meta property="og:image" content="https://revaltronics.com/static/media/logo.c52891f966eb2c3861ca.png" />
       </Helmet>
       <LoadingBar
         progress={progress}

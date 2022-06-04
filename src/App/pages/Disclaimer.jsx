@@ -10,6 +10,9 @@ export const Disclaimer = (props) => {
 
             <Helmet>
                 <title>Disclaimer | Revaltronics</title>
+                <meta property="og:title" content="Disclaimer | Revaltronics" />
+                <meta property="og:description" content="Download latest lyrics in CRT format or you can view them online." />
+                <meta property="og:image" content="https://revaltronics.com/static/media/logo.c52891f966eb2c3861ca.png" />
             </Helmet>
 
             <div className='lg:h-[10%] sm:h-[30%] h-[23%]'>

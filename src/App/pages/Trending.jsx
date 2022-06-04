@@ -42,8 +42,11 @@ export const Trending = (props) => {
   return (
     <div className={`Trending h-full w-full overflow-hidden ${opacity} dark:bg-[#2C2C2C]`}>
 
-<Helmet>
+      <Helmet>
         <title> Trending | Revaltronics</title>
+        <meta property="og:title" content="RevAltronics" />
+        <meta property="og:description" content="Download latest lyrics in CRT format or you can view them online." />
+        <meta property="og:image" content="https://revaltronics.com/static/media/logo.c52891f966eb2c3861ca.png" />
       </Helmet>
     <LoadingBar
     progress={progress}

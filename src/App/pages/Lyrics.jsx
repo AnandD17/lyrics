@@ -48,6 +48,9 @@ export const Lyrics = (props) => {
 
             <Helmet>
                 <title> {`${info.title} lyrics by ${info.artist}`} | Revaltronics</title>
+                <meta property="og:title" content={info.title} />
+                <meta property="og:description" content={`Download Free ${info.title} ${info.artist !== "" ? 'by' + info.artist : ''}`} />
+                <meta property="og:image" content={info.poster ? info.poster : logo} />
             </Helmet>
 
 
