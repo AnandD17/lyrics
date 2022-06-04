@@ -37,6 +37,7 @@ export const Trending = (props) => {
   }
   useEffect(()=> {
     getData();
+    // console.log('trigger only once');
   },[]);
 
   return (

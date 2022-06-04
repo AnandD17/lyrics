@@ -73,6 +73,7 @@ export const Home = (props) => {
     
   useEffect(() => {
     getData();
+    // console.log('trigger only once');
   }, []);
 
   useEffect(() => {
