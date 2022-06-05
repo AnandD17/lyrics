@@ -42,7 +42,7 @@ export const Recents = (props) => {
       setOpacity('')
       setProgress(100)
       setSongs(data.data.data);
-      setTotalPage(Math.floor(data.data.additional.total/50))
+      setTotalPage(Math.ceil(data.data.additional.total/50))
       // setTotalPage(parseInt(data.data.additional.total/50).floor)
       // console.log('total pages');
       // console.log(totalPage);

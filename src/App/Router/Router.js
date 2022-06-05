@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Sidebar } from '../components/Sidebar'
 import { ContactUs } from '../pages/ContactUs'
 import { Disclaimer } from '../pages/Disclaimer'
@@ -11,6 +11,7 @@ import { Trending } from '../pages/Trending'
 import { SearchLyrics } from '../pages/SearchLyrics'
 
 export  const RouterMain = () => {
+  // const location = useLocation();
   const [mode,setMode] = useState()
   const [sidebarClass,setSidebarClass] = useState('hidden');
 
@@ -45,7 +46,6 @@ export  const RouterMain = () => {
        }
     },[])
 
-
     console.log(JSON.parse(localStorage.getItem('mode')));
 
     const swapMode = () =>{
@@ -75,7 +75,7 @@ export  const RouterMain = () => {
                     <Routes>
                         <Route exact path="/search/:id" element={<SearchLyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
                         <Route exact path="/lyrics/:id" element={<Lyrics toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
-                        <Route exact path="/recents" element={ <Recents toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>  
+                        <Route exact path="/recents/" element={ <Recents toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>  
                         <Route exact path="/privacy" element={<Privacy toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
                         <Route exact path="/disclaimer" element={<Disclaimer toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
                         <Route exact path="/contact" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />

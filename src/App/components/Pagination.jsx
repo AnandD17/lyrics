@@ -9,13 +9,13 @@ export const Pagination = (props) => {
   const pageNumbers = [];
   const showPages = [];
 
-  for(let i = 1; i <= props.totalPage; i++){
+  for(var i = 1; i <= props.totalPage; i++){
       pageNumbers.push(i);
   }
 
   if(pageNumbers.length<7){
-    for(let i = 1; i <= pageNumbers; i++){
-      showPages.push(pageNumbers[i]);
+    for(var i = 1; i <= props.totalPage; i++){
+      showPages.push(i);
   }
   }
 

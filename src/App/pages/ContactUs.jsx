@@ -9,6 +9,8 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/apiConstant'
 import cogoToast from 'cogo-toast'
 import LoadingBar from "react-top-loading-bar";
+import validator from 'validator'
+  
 
 
 export const ContactUs = (props) => {
@@ -18,9 +20,26 @@ export const ContactUs = (props) => {
     const [display,setDisplay] = useState('')
     const [cValue,setCValue] = useState('Contact Us')
     const [progress, setProgress] = useState(0);
+    const [emailError, setEmailError] = useState()
+
+        const validateEmail = (e) => {
+            var email = e.target.value
+            setEmail(e.target.value)
+        
+            if (validator.isEmail(email)) {
+            setEmailError(0)
+            } else {
+            setEmailError(1)
+            }
+        }
 
     const sendReq = async() =>{
         setProgress(50)
+        if(emailError){
+            cogoToast.error('Email is not valid');
+            setProgress(100)
+            return;
+        }
         if(!name){
             cogoToast.error('Name is Required');
             setProgress(100)
@@ -94,7 +113,7 @@ export const ContactUs = (props) => {
 
                     <div className='rounded-[5px] flex h-[55px] gap-[10px] px-2 bg-[#F5F5F5] my-5'>
                         <div className='flex justify-center items-center'><MdEmail className='text-[#C3C3C3] h-[25px] w-[25px]'/></div>
-                        <input type="email" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='*Email' onChange={(e)=>{setEmail(e.target.value)}} value={email} />
+                        <input type="email" className='active:border-0 bg-[#F5F5F5] text-sm w-full focus:outline-0 text-[#C3C3C3] px-3' placeholder='*Email' onChange={(e)=>{validateEmail(e)}} value={email} />
                     </div>
 
                     <div className='rounded-[5px] flex h-full gap-[10px] py-3 px-2 bg-[#F5F5F5] my-5'>

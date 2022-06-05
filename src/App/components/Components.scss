@@ -1,0 +1,28 @@
+// sm	640px	@media (min-width: 640px) { ... }
+// md	768px	@media (min-width: 768px) { ... }
+// lg	1024px	@media (min-width: 1024px) { ... }
+// xl	1280px	@media (min-width: 1280px) { ... }
+// 2xl	1536px	@media (min-width: 1536px) { ... }
+
+//sm
+@media (min-width: 640px) {
+    .MusicThumbnail{
+        height: 300px !important;
+    }
+}
+//xl
+@media (min-width: 1280px) {
+    .MusicThumbnail{
+        height: 320px !important;
+    }
+}
+//2xl
+@media (min-width: 1536px) {
+    .MusicThumbnail{
+        height: 380px !important;
+    }
+}
+
+.MusicThumbnail{
+    height: 255px !important;
+}
