@@ -28,7 +28,7 @@ export const Sidebar = (props) => {
 
     useEffect(()=>{
         erase1();
-    },[])
+    },[location.pathname])
 
 
     return (
@@ -43,11 +43,14 @@ export const Sidebar = (props) => {
                 </div>
 
                 <div>
-                    <NavLink to="/" onClick={()=>{props.toggelSidebar();}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
+                    <NavLink to={"/"}  className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`}>
+                        <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                         <AiFillHome className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/>
                         <div className='sm:text-xl text-base flex items-center'>Home</div>
+                        </div>
                     </NavLink>
-                    <NavLink to="/recents" onClick={()=>{props.toggelSidebar();}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/recents'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF]':'text-[#AEAEAE]'}` }>
+                    <NavLink to="/recents" className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/recents'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF]':'text-[#AEAEAE]'}` }>
+                    <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                         <div className='w-[30px]'>
                             <div className='absolute z-50'>
                             <AiFillClockCircle className='lg:h-[26px] lg:w-[26px] h-[22px] w-[22px]'/>
@@ -57,11 +60,14 @@ export const Sidebar = (props) => {
                             </div>
                         </div>
                         <div className='sm:text-xl text-base flex items-center'>Recently Uploaded</div>
+                        </div>
                     </NavLink>
-                    <NavLink to="/trending" onClick={()=>{props.toggelSidebar();}} className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`} onMouseEnter={()=>{set1();}} onMouseLeave={()=>{erase1();}}>
+                    <NavLink to="/trending" className={`pl-[30px] py-3 flex gap-[13px] hover:bg-[#EAFEEF] hover:border-l-[green] border-box hover:pl-[27px] hover:border-l-[3px] hover:text-[#00C637] cursor-pointer ${location.pathname==='/trending'?' text-[#00C637] border-l-[3px] pl-[27px] border-l-[green] bg-[#EAFEEF] ':'text-[#AEAEAE]'}`} onMouseEnter={()=>{set1();}} onMouseLeave={()=>{erase1();}}>
                         {/* <GoFlame className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]'/> */}
+                        <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                         <img src={location.pathname==='/trending'?tr2:tri} alt="trending" />
                         <div className='sm:text-xl text-base flex items-center '>Trending</div>
+                        </div>
                     </NavLink>
                 </div>
 
@@ -70,17 +76,23 @@ export const Sidebar = (props) => {
                 <div className='my-[30px] flex justify-center'>
                     <div className='border w-[80%]'></div>
                 </div>
-                <NavLink to="/contact" onClick={()=>{props.toggelSidebar();}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <NavLink to="/contact"  className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                     <img src={cont} className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Contact Us</div>
+                    </div>
                 </NavLink>
-                <NavLink to="/privacy" onClick={()=>{props.toggelSidebar();}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <NavLink to="/privacy"  className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                     <img src={lock} className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Pivacy Policy</div>
+                    </div>
                 </NavLink>
-                <NavLink to="/disclaimer" onClick={()=>{props.toggelSidebar();}} className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <NavLink to="/disclaimer" className='pl-[30px] py-3 flex gap-[13px] cursor-pointer'>
+                <div onClick={(e)=>{props.toggelSidebar()}} className={` flex gap-[13px]`}>
                     <FiInfo className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px] text-[#AEAEAE]'/>
                     <div className='sm:text-xl text-base flex items-center text-[#AEAEAE]'>Disclaimer</div>
+                    </div>
                 </NavLink>
                 <div  className={`pl-[30px] py-3 flex gap-[13px] cursor-pointer ${props.mode==='Dark Mode'?'bg-[#EAFEEF] text-[#00C637]':'bg-[#2C2C2C] text-[#AEAEAE]'}`} onClick={()=>{props.changeMode(props.mode==='Dark Mode'?'Light Mode':'Dark Mode')}}>
                     <BsSunFill className='lg:h-[30px] lg:w-[30px] h-[25px] w-[25px]' />

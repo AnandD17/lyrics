@@ -72,6 +72,7 @@ export const Home = (props) => {
   }
     
   useEffect(() => {
+    props.toggleSideBar()
     getData();
     // console.log('trigger only once');
   }, []);
