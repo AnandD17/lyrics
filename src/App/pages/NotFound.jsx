@@ -5,10 +5,12 @@ import logo from './../assets/logo.png'
 function NotFound() {
   return (
     <div className='h-full w-full text-2xl'>
-        <div className='flex flex-col justify-center items-center h-full w-full'>
+        <div className='dark:text-white flex flex-col justify-center items-center h-full w-full'>
             <img src={logo} className={'w-[70%] sm:w-[50%]'} alt="Revaltronics" />
             <br />
-            <div className="text-3xl">Ooops Thought you are on a wrong page</div>
+            <div className="text-3xl">Ooops We Thought you are on a wrong page</div>
+            <br />
+            <div className="text-6xl">404</div>
             <br />
             <NavLink to={'/'} >
                 <div className='sm:hidden text-[#1363DF]'>
