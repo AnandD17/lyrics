@@ -9,6 +9,7 @@ import { Recents } from '../pages/Recents'
 import { Lyrics } from '../pages/Lyrics'
 import { Trending } from '../pages/Trending'
 import { SearchLyrics } from '../pages/SearchLyrics'
+import NotFound from '../pages/NotFound'
 
 export  const RouterMain = () => {
   // const location = useLocation();
@@ -81,6 +82,7 @@ export  const RouterMain = () => {
                         <Route exact path="/contact" element={<ContactUs toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>} />
                         <Route exact path="/trending" element={<Trending toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
                         <Route exact path={`/`} element={<Home toggleSideBar={()=>{setSidebarClass(sidebarClass==='hidden'?'':'hidden')}}/>}/>
+                        <Route path="*" element={<NotFound/>}/>
                     </Routes>
                     </div>
                 </div>
